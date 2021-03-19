@@ -1,1 +1,1 @@
-# mortal-kombat
+# Mortal kombat-учебный проект Тышкевича Игоря
