@@ -1,0 +1,642 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:focus, :active {
+  outline: none; }
+
+a:focus, a:active {
+  outline: none; }
+
+nav, footer, header, aside {
+  display: block; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 18px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+input, button, textarea {
+  font-family: inherit; }
+
+input::-ms-clear {
+  display: none; }
+
+button {
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+a, a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+ul li {
+  list-style: none; }
+
+img {
+  vertical-align: top; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400; }
+
+button {
+  position: relative;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s; }
+
+button:hover {
+  top: 5px; }
+
+.wrapper {
+  font-family: Verdana, Geneva, sans-serif;
+  width: 100%;
+  min-height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template: minmax(100px, auto) 1fr minmax(220px, auto)/1fr;
+  grid-template-areas: "header" "main" "footer"; }
+
+.header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  min-height: 100%;
+  background-color: #cccccc;
+  grid-area: header;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.headItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: auto;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s; }
+  .headItem:hover {
+    background-color: #000; }
+
+.headLink {
+  color: #455866;
+  height: 100%;
+  font-size: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 20px; }
+  .headLink:hover {
+    color: #fff; }
+
+.headLogo {
+  background: url(img/логотип.png) round;
+  width: 270px;
+  height: 60px;
+  margin: auto 20px; }
+
+.main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  width: 100%;
+  background-color: #fff;
+  grid-area: main;
+  display: -ms-grid;
+  display: grid; }
+
+.bigImg1 {
+  max-width: 100%; }
+
+.content1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  background-color: #b7deed; }
+
+.container {
+  width: 1300px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.cont1text {
+  min-width: 100%;
+  text-align: center;
+  margin: 80px 0px 40px 0px; }
+
+.title1 {
+  font-size: 38px;
+  color: #455866; }
+
+.subtitle1 {
+  font-size: 27px;
+  color: #455866;
+  margin: 20px 0 0 0; }
+
+.cont1Products {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto; }
+
+.productsCol {
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s; }
+  .productsCol:hover {
+    background-color: #cccccc; }
+
+.imgProduct {
+  width: 200px;
+  height: 290px; }
+
+.prodTitle {
+  margin: 25px;
+  text-decoration: underline;
+  font-size: 22px;
+  color: #455866; }
+
+.prodText {
+  font-size: 20px;
+  color: #455866;
+  font-weight: 400; }
+
+.prodCost {
+  margin: 35px;
+  font-size: 26px;
+  font-weight: 700; }
+
+.prodButton {
+  font-size: 18px;
+  width: 200px;
+  height: 45px;
+  background-color: #cc0000;
+  color: #fff;
+  border-radius: 50px 50px; }
+
+.title2 {
+  color: #455866;
+  font-size: 30px; }
+
+.bigButton {
+  font-size: 18px;
+  width: 450px;
+  height: 60px;
+  background-color: #cc0000;
+  color: #fff;
+  border-radius: 50px 50px;
+  margin: 30px 0 00px 0; }
+
+.cont1Ikons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.IconsCol {
+  padding: 10px;
+  margin: 10px 10px 60px 10px;
+  width: 425px;
+  text-align: center; }
+
+.icon1 {
+  height: 150px;
+  width: 200px; }
+
+.icontitle {
+  margin: 25px;
+  text-decoration: underline;
+  font-size: 22px;
+  color: #455866; }
+
+.iconText {
+  font-size: 20px;
+  color: #455866;
+  font-weight: 400; }
+
+.bigImg2 {
+  width: 100%;
+  background: url(img/bigImg2.jpg) 0 0/100% auto no-repeat;
+  min-height: 800px;
+  position: relative; }
+
+.sertificat {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 450px;
+  height: 350px;
+  background-color: #ff7cd8; }
+
+.sertTitle {
+  margin: 90px 0px 30px 0;
+  text-align: center;
+  font-size: 24px;
+  color: #455866; }
+
+.sertText {
+  margin: 0 50px 0 50px;
+  font-size: 20px;
+  color: #455866;
+  text-align: center; }
+
+.sertButton {
+  font-size: 18px;
+  width: 300px;
+  height: 45px;
+  margin: 30px 75px 30px 75px;
+  background-color: #cc0000;
+  color: #fff;
+  border-radius: 50px 50px; }
+
+.subtitle2 {
+  font-size: 19px;
+  color: #455866;
+  margin: 20px; }
+
+.otzuvContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 10px; }
+
+.otzuv1img {
+  width: 100%; }
+
+.otzuv {
+  margin: 10px 0;
+  width: 600px; }
+
+.otzuvTitle {
+  margin: 70px 0 0 0;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 28px;
+  color: #455866; }
+
+.otzuvText {
+  padding: 100px;
+  text-align: center;
+  font-size: 22px;
+  color: #455866; }
+
+.bigImg3 {
+  width: 100%; }
+
+.imgBig {
+  width: 100%; }
+
+.footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  background-color: #cccccc;
+  grid-area: footer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px 30px 20px 50px;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
+
+.footLogoText {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0px 0px 80px 0px; }
+
+.footLogo {
+  background: url(img/логотип.png) no-repeat round;
+  width: 300px;
+  height: 60px;
+  margin: 0px 0px; }
+
+.LogoText {
+  color: #455866;
+  padding: 65px 0px 0px 0px;
+  font-size: 22px; }
+
+.footCol {
+  margin: 37px 20px 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.colText {
+  color: #455866;
+  font-size: 28px;
+  margin: 0px 0 15px 0; }
+
+.colLink {
+  margin: 10px 0 0px 0;
+  font-size: 20px;
+  color: #0e0e0e; }
+  .colLink:hover {
+    text-decoration: underline; }
+
+@media (max-width: 1335px) {
+  .header {
+    max-width: 1325px; }
+  .headItem_big {
+    display: none; }
+  .container {
+    max-width: 1150px; }
+  .otzuvTitle {
+    margin: 50px 30px 30px 30px; }
+  .otzuvText {
+    padding: 30px 60px;
+    margin: 0; } }
+
+@media (max-width: 1160px) {
+  .container {
+    max-width: 940px; }
+  .aboutCompany {
+    display: none; }
+  .IconsCol1 {
+    display: none; }
+  .bigImg2 {
+    min-height: 600px; }
+  .IconsCol {
+    margin: 0;
+    width: 50%; }
+  .otzuvTitle {
+    margin: 30px 10px 30px 10px; }
+  .otzuvText {
+    padding: 10px 40px;
+    margin: 0;
+    font-size: 20px; } }
+
+@media (max-width: 960px) {
+  .headItem {
+    display: none; }
+  .container {
+    width: 100%;
+    max-width: 760px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start; }
+  .foorer {
+    max-width: 960px; }
+  .imgBig {
+    max-width: 950px; }
+  .bigImg2 {
+    min-height: 500px; }
+  .otzuvTitle {
+    margin: 20px 10px 30px 10px;
+    font-size: 24px; }
+  .otzuvText {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 18px; }
+  .footLogo {
+    width: 200px;
+    height: 40px; }
+  .footLogoText {
+    margin: 0; }
+  .footCol {
+    margin: 40px 20px; }
+  .coltext {
+    font-size: 22px; }
+  .colLink {
+    font-size: 16px; }
+  .sertificat {
+    width: 330px;
+    height: 220px; }
+  .sertTitle {
+    margin: 45px 0px 15px 0;
+    font-size: 20px; }
+  .sertText {
+    margin: 0 25px 0 25px;
+    font-size: 16px; }
+  .sertButton {
+    width: 230px;
+    height: 50px;
+    margin: 20px 50px; }
+  .icontitle {
+    margin-left: 0;
+    margin-right: 0; } }
+
+@media (max-width: 770px) {
+  .container {
+    max-width: 550px; }
+  .productsCol1 {
+    display: none; }
+  .IconsCol2 {
+    display: none; }
+  .iconText {
+    padding: 10px; }
+  .whatSay {
+    max-width: 550px; }
+  .otzuvContent1 {
+    display: none; }
+  .otzuvContent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+  .otzuvText {
+    max-width: 550px;
+    margin: 0;
+    padding: 0;
+    margin-left: -10px; }
+  .otzuvTitle {
+    margin-left: -25px; }
+  .footCol {
+    display: none; }
+  .LogoText {
+    padding: 70px 0px 0 0;
+    margin-right: -300px; }
+  .footLogo {
+    margin-left: -100px; }
+  .whatSay {
+    padding-bottom: 30px; }
+  .bigImg2 {
+    min-height: 300px; }
+  .wrapper {
+    max-width: 770px;
+    overflow-x: hidden; } }
+
+@media (max-width: 560px) {
+  .container {
+    max-width: 400px; }
+  .title1 {
+    font-size: 20px; }
+  .subtitle1 {
+    font-size: 17px; }
+  .imgProduct {
+    width: 160px;
+    height: 232px; }
+  .productsCol {
+    max-width: 200px;
+    margin: 0; }
+  .prodTitle {
+    font-size: 18px;
+    margin: 10px 5px; }
+  .prodText {
+    font-size: 12px;
+    margin: 10px 5px; }
+  .prodCost {
+    font-size: 16px;
+    margin: 20px; }
+  .prodButton {
+    font-size: 16px;
+    width: 150px;
+    height: 40px; }
+  .cont1text {
+    max-width: 400px;
+    margin: 20px 0; }
+  .title2 {
+    font-size: 22px; }
+  .bigButton {
+    max-width: 300px;
+    height: 50px; }
+  .IconsCol {
+    max-width: 200px; }
+  .icon1 {
+    max-width: 110px; }
+  .icontitle {
+    font-size: 17px; }
+  .iconText {
+    font-size: 13px;
+    padding: 5px;
+    margin: 0; }
+  .sertificat {
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 150px; }
+  .sertTitle {
+    font-size: 16px;
+    margin: 10px; }
+  .sertText {
+    font-size: 12px;
+    margin: 0; }
+  .sertButton {
+    font-size: 12px;
+    width: 120px;
+    height: 40px;
+    margin: 15px 40px; }
+  .bigImg2 {
+    min-height: 250px; }
+  .whatSay {
+    max-width: 400px; }
+  .subtitle2 {
+    font-size: 16px; }
+  .otzuv {
+    max-width: 380px; }
+  .otzuvTitle {
+    font-size: 18px;
+    margin: 10px; }
+  .otzuvText {
+    font-size: 14px;
+    margin: 20px; }
+  .wrapper {
+    max-width: 560px; } }
+
+@media (max-width: 399px) {
+  .container {
+    max-width: 320px; }
+  .imgProduct {
+    width: 128px;
+    height: 186px; }
+  .title1 {
+    font-size: 16px; }
+  .subtitle1 {
+    font-size: 14px; }
+  .productsCol {
+    max-width: 160px; }
+  .prodButton {
+    font-size: 14px;
+    width: 120px;
+    height: 32px; }
+  .IconsCol {
+    max-width: 160px;
+    margin-top: -20px; }
+  .icon1 {
+    max-width: 92px;
+    margin-bottom: -20px; }
+  .icontitle {
+    font-size: 15px; }
+  .iconText {
+    font-size: 10px; }
+  .title2 {
+    font-size: 17px; }
+  .bigImg2 {
+    min-height: 220px; }
+  .whatSay {
+    max-width: 320px; }
+  .subtitle2 {
+    font-size: 14px; }
+  .otzuv {
+    max-width: 300px; }
+  .wrapper {
+    max-width: 400px; }
+  .footLogo {
+    margin-left: -125px; } }
