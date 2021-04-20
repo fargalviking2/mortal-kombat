@@ -1,50 +1,75 @@
 <html lang="ru">
-	<head>
-		<title>morCombat</title>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="mortalCombat 3.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
-	<body>
-		<div class="app">
-			<div class="inro">
-				<div class="video">
-					<video src="video/video.mp4" class="video__media" autoplay muted loop></video>
-				</div>
+
+<head>
+	<title>morCombat</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="mortalCombat 3.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="app">
+		<div class="inro">
+			<div class="video">
+				<video src="video/video.mp4" class="video__media" autoplay muted loop></video>
 			</div>
-			<header class="header">
-				<a href="" class="logo">
-					<img src="img/КиноПульс.png" alt="" class="logo-image">
-				</a>
-				<a href="" class="user">
-					<span class="user-name">Igor</span>
-					<img src="img/logo user.jpg" alt="" class="user-photo">
-				</a>
-			</header>
-			<section class="film">
-				<img src="img/film-logo2.png" alt="" class="film-logo">
-				<div class="tags">
-					<span class="date">2021</span>
-					<span class="genre">боевик, фэнтези, фантастика</span>
-					<span class="country">США</span>
-					<span class="age">18+</span>
-				</div>
-				<p class="description">Продолжение легендарного фильма из 90-х. Предстоит по-настоящему смертельная битва, где останется только сильнейший</p>
-				<div class="button-group">
-					<a data-fancybox data-type="iframe" data-src="предзаказ/predzakaz.html" class="button button-primery">Предзаказ фильма</a>
-					<a data-fancybox href="https://www.youtube.com/watch?v=gwsaI9txcXs$t" class="button button-default">
-						<img src="img/play.svg" alt="" class="button-icon">
-						<span class="button-text">Смотреть трейлер</span>
-					</a>
-				</div>
-			</section>
 		</div>
-		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-		<script src="index.js"></script>
-	</body>
+		<header class="header">
+			<a href="" class="logo">
+				<img src="img/КиноПульс.png" alt="" class="logo-image">
+			</a>
+			<a href="" class="user">
+				<span class="user-name">Igor</span>
+				<img src="img/logo user.jpg" alt="" class="user-photo">
+			</a>
+		</header>
+		<section class="film">
+			<img src="img/film-logo2.png" alt="" class="film-logo">
+			<div class="tags">
+				<span class="date">2021</span>
+				<span class="genre">боевик, фэнтези, фантастика</span>
+				<span class="country">США</span>
+				<span class="age">18+</span>
+			</div>
+			<p class="description">Продолжение легендарного фильма из 90-х. Предстоит по-настоящему смертельная битва, где
+				останется только сильнейший</p>
+			<div class="button-group">
+				<a href="#popup">
+					<button class="button button-primery">Предзаказ фильма</button>
+				</a>
+				<a data-fancybox href="https://youtu.be/NYH2sLid0Zc" class="button button-default">
+					<img src="img/play.svg" alt="" class="button-icon">
+					<span class="button-text">Смотреть трейлер</span>
+				</a>
+			</div>
+		</section>
+	</div>
+	<div id="popup" class="popup">
+		<div class="popup__body">
+			<a href="##" class="popup__area"></a>
+			<div class="popup__content">
+				<a href="##" class="popup__close"></a>
+				<div class="popup__title popup__title_big">Оставить заявку</div>
+				<div class="popup__title">Введите имя</div>
+				<input class="popup__input" placeholder="Введите имя" name="username" type="text">
+				<div class="popup__title">Введите E-mail</div>
+				<input class="popup__input" placeholder="Введите E-mail" type="text">
+				<div class="popup__title">Введите номер телефона</div>
+				<input class="popup__input" placeholder="Введите номер" name="userphone" type="tell">
+				<button class="prodButton popup__button">Отправить</button>
+				<div class="popup__text">Нажимая на кнопку, Вы принимаете <a class="popup__a" href="##">Положение</a> и <a
+						class="popup__a" href="##">Согласие</a> на обработку персональных данных.</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<script src="index.js"></script>
+</body>
+
 </html>
