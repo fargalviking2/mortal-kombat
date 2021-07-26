@@ -332,4 +332,21 @@ h6 {
     -ms-grid-columns: 1fr;
         grid-template: 1fr 1fr 1fr 1fr/ 1fr;
   }
+  .grid-template-pizza__info2-left {
+    margin-left: -100px;
+  }
+  .grid-template-pizza__info-arrow3 {
+    margin-left: 100px;
+  }
+  .grid-template-pizza__info2-left2 {
+    margin-left: -40px;
+  }
+  .grid-template-pizza__info-arrow2 {
+    margin-left: 40px;
+  }
+}
+
+.checked {
+  border-color: #ff6901;
+  color: #ff6901;
 }

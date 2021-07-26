@@ -208,5 +208,21 @@
 @media (max-width: 750px) {
 	.grid-template-pizza {
 		grid-template: 1fr 1fr 1fr 1fr/ 1fr;
+		&__info2-left {
+			margin-left: -100px;
+		}
+		&__info-arrow3 {
+			margin-left: 100px;
+		}
+		&__info2-left2 {
+			margin-left: -40px;
+		}
+		&__info-arrow2 {
+			margin-left: 40px;
+		}
 	}
+}
+.checked {
+	border-color: #ff6901;
+	color: #ff6901;
 }
