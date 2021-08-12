@@ -36,17 +36,40 @@ const App = {
 			infoCounter3: 1,
 			infoCounter4: 1,
 
-			types: [
+			basketCounter: 0,
+
+			newPizza: { title: 1 },
+
+			inBascet: 0,
+			products: [
+				// 'Заметка 1', 'Заметка 2'
 				{ id: 1, title: 'hervam' },
 				{ id: 2, title: 'hervam2' },
+				{ id: 3, title: 'hervam3' },
 			],
 		}
 	},
-	// methods: {
-	// 	counterLososPlus() {
-	// 		this.counterLosos++;
-	// 	}
-	// },
+	methods: {
+		// addToBasket() {
+		// 	this.counterLosos25++;
+		// 	if (this.counterLosos25 !== 0) { console.log(this.counterLosos25); }
+		// 	else { console.log('her'); }
+		// },
+
+		onCounter(it) {
+			this.inBascet++;
+
+			this.newPizza.title = it.pizzaName;
+			this.products.push(this.newPizza)
+			console.log(this.products);
+		},
+		onCounterMinus() {
+			this.inBascet--;
+		},
+		removeProduct(idx) {
+			this.products.splice(idx, 1)
+		},
+	},
 	// computed: {
 
 	// },
@@ -72,6 +95,49 @@ app.component('type-block', {
 		<button @click="count--" type="submit" class="counter--">-</button>
 		<div class="counter">{{count}}</div>
 		<button @click="count++" type="submit" class="counterplus">+</button>
+	</div>
+</template>
+`
+})
+app.component('type-block2', {
+	data() {
+		return {
+			count: 0
+		}
+	},
+	methods: {
+		addToBasket() {
+			this.count++;
+			this.$emit('counter', {
+				count: this.count,
+				pizzaName: this.pizzaName
+			})
+			// if (this.count !== 0) { console.log(this.actualCost); }
+			// else {
+			// 	console.log('her');
+			// }
+		},
+		removeFromBasket() {
+			this.count--;
+			this.$emit('counterMinus', {
+				count: this.count
+			})
+		}
+	},
+	props: ['actualCost', 'needCost', 'pizzaName'],
+	template: `
+	
+	<template v-if="actualCost == needCost">
+	<button v-if="count < 1" @click="addToBasket"
+		class="grid-template-pizza__to-bascet-button">В
+		корзину</button>
+	<div v-else class="grid-template-pizza__in-bascet">
+		<div class="grid-template-pizza__gal">
+			<img src="img/gal.svg" alt="">
+		</div>
+		<button @click="removeFromBasket" type="submit" class="counter--">-</button>
+		<div class="counter">{{count}}</div>
+		<button @click="addToBasket" type="submit" class="counterplus">+</button>
 	</div>
 </template>
 `
