@@ -1,146 +1,158 @@
-// const redButton = document.querySelector('.her');
-// const redBlocks = document.getElementsByClassName('grid-template-pizza__info2');
-// console.log(redButton); console.log('dsds');
-// redButton.addEventListener("click", function (e) {
-// 	console.log('dsds');
-// 	for (var i = 0; i < redBlocks.length; i++) {
-// 		redBlocks[i].classList.toggle('_active');
-// 		console.log('dsd');
-// 	}
-// });
-
 const App = {
-	data() {
-		return {
-			lolososCost: '379',
-			chickenBlueCost: "349",
-			asiaChickenCost: "279",
-			italianCost: "299",
+	data: () => ({
+		/**
+			Используй вот такие числовые константы, так проще что-то изменять, проверять и т.д.
+			Также в базе данных занимают меньше места, если использовать тип колонки unsigned tiny integer
+			Лучше обзавестись папочкой constants и там хранить файлы констант по типу сущности, например:
+			pizza.js, cart.js и т.д.
 
-			counterLosos: 0,
-			counterLosos25: 0,
-			counterLosos30: 0,
-			counterLosos35: 0,
-			counterBlue25: 0,
-			counterBlue30: 0,
-			counterBlue35: 0,
-			counterAsian25: 0,
-			counterAsian30: 0,
-			counterAsian35: 0,
-			counterItalian25: 0,
-			counterItalian30: 0,
-			counterItalian35: 0,
+		 	ВАЖНО: Константы не нужно записывать в data вообще, я записал чтоб сократить время
+		 	ВАЖНО: Их необходимо импортировать в компоненты
 
-			infoCounter: 1,
-			infoCounter2: 1,
-			infoCounter3: 1,
-			infoCounter4: 1,
+			Также можно использовать константы ввиде объектов, например
+			const CONSTANT = {
+				value: 1,
+				text: 'Пышное тесто'
+			}
+		 */
 
-			basketCounter: 0,
+		// Константы типа теста
+		THIN_DOUGH_TYPE: 1, // Тонкое
+		FLUFFY_DOUGH_TYPE: 2, // Пышное
 
-			newPizza: { title: 1 },
+		// Константы размера теста
+		SMALL_SIZE: 25,
+		MIDDLE_SIZE: 30,
+		LARGE_SIZE: 35,
 
-			inBascet: 0,
-			products: [
-				// 'Заметка 1', 'Заметка 2'
-				{ id: 1, title: 'hervam' },
-				{ id: 2, title: 'hervam2' },
-				{ id: 3, title: 'hervam3' },
-			],
-		}
-	},
+		isOpenCart: false,
+		cartCounter: 0,
+		cart: [],
+		products: {
+			/**
+			 * Лучше использовать в объекте один прайс, а потом рассчитывать его,
+			 * взависимости от параметров, я пишу так, чтоб сократить время.
+			 * Но это выглядит примерно так:
+			 *
+			 * const SMALL_SIZE = {
+			 * 	   value: 25
+			 *     premium: 100
+			 * }
+			 * const MIDDLE_SIZE = {
+			 * 	   value: 30
+			 *     premium: 150
+			 * }
+			 *
+			 * И т.д.
+			 *
+			 * const totalPrice = price + product.size.premium
+			 */
+			1: { // Ключ объекта зависит от его id
+				img: 'img/lolosos.jpg',
+				title: 'Лосось',
+				description: 'Филе лосося, сыр моцарелла, сыр креметта, соус Песто, сливочный соус, томаты черри',
+				size: 25, // Если константы были бы исмортированы, то не нужно было бы вот так жёстко писать, в люом
+				// случае эти данные будут подгружаться из базы данных, поэтому тут это не важно
+				dough: 1, // Если константы были бы исмортированы, то не нужно было бы вот так жёстко писать, в люом
+				// случае эти данные будут подгружаться из базы данных, поэтому тут это не важно
+				smallPrice: 350,
+				mediumPrice: 500,
+				largePrice: 600,
+				totalPrice: 350,
+				id: 1
+			},
+			2: { // Ключ объекта зависит от его id
+				img: 'img/lolosos.jpg',
+				title: 'MIX',
+				description: 'Филе лосося, сыр моцарелла, сыр креметта, соус Песто, сливочный соус, томаты черри',
+				size: 25, // Если константы были бы исмортированы, то не нужно было бы вот так жёстко писать, в люом
+				// случае эти данные будут подгружаться из базы данных, поэтому тут это не важно
+				dough: 1, // Если константы были бы исмортированы, то не нужно было бы вот так жёстко писать, в люом
+				// случае эти данные будут подгружаться из базы данных, поэтому тут это не важно
+				smallPrice: 400,
+				mediumPrice: 600,
+				largePrice: 700,
+				totalPrice: 400,
+				id: 2
+			}
+		},
+	}),
 	methods: {
-		// addToBasket() {
-		// 	this.counterLosos25++;
-		// 	if (this.counterLosos25 !== 0) { console.log(this.counterLosos25); }
-		// 	else { console.log('her'); }
-		// },
-
-		onCounter(it) {
-			this.inBascet++;
-
-			this.newPizza.title = it.pizzaName;
-			this.products.push(this.newPizza)
-			console.log(this.products);
+		removeFromCart (product) {
+			console.log(product)
 		},
-		onCounterMinus() {
-			this.inBascet--;
-		},
-		removeProduct(idx) {
-			this.products.splice(idx, 1)
-		},
-	},
-	// computed: {
+		calculateProductPrice (id, size) {
+			/**
+			 * Я не учитываю толщину теста, дабы сократить время, но всё равно это не очень
+			 * качественный код, если сделать рефакторинг и писать по уму, то таких свитчей не должно быть
+			 * всё должно будет рассчитывать на бэкенде и возвращаться значения, это долгая тема
+			 * для разговора
+			 */
+			switch (size) {
+				case this.SMALL_SIZE:
+					this.products[id].totalPrice = this.products[id].smallPrice
+					break
 
-	// },
+				case this.MIDDLE_SIZE:
+					this.products[id].totalPrice = this.products[id].mediumPrice
+					break
+
+				case this.LARGE_SIZE:
+					this.products[id].totalPrice = this.products[id].largePrice
+					break
+
+				default:
+					this.products[id].totalPrice = this.products[id].smallPrice
+					break
+			}
+		},
+		addToCart (id) {
+			// Так не делай, я просто не шарю как твоим способом юзать data, нет времени гуглить
+			const { cart: data } = JSON.parse(JSON.stringify(this))
+			const initial = data.filter(pizza => pizza.id === id).pop()
+
+			/**
+			 * Это я написал в учебных целях, но на продакш проектах так делать нельзя
+			 * На продакшн проектах используется больше технологий и это всё проще
+			 * реализовать. Также я не разделил пиццу по размерам, потому что это время.
+			 * Я думаю ты сам догадаешься как это сделать, но мой совет сначала посмотреть гайды
+			 * по таким штукам и как это делают крутые ребята.
+			 *
+			 * Хотя кто знает, может крутые ребята так и делают :)
+			 * Пока что я не писал интернет-магазины, со следующей недели начну писать
+			 * сайт для адвокатский курсов в Новой Зеландии, возможно я столкнусь с этим
+			 * Я дал тебе несколько советов, но использовавть их или нет - решай сам.
+			 * Каждый дрочет так как хочет, поэтому не факт что то, что я написал идеально
+			 * Но это лучше чем было :)
+			 *
+			 * И ещё, используй готовые библиотеки компонентов, так будешь быстрее практиковаться
+			 * Есть крутая библиотека vuetify, я на ней написал недавно проект, не стесняйся использовать
+			 * библиотеки, зачем изобретать велосипед, НО! Сначала напиши сам, воспроизведи библиотеку
+			 * или часть её функций, а потом юзай готовые решения хороших программистов.
+			 * Иногда даже необязательно самому писать некоторые вещи вообще :)
+ 			 */
+			if (initial) {
+				this.cart = [
+					...data.filter(pizza => pizza.id !== id),
+					{
+						...initial,
+						counter: initial.counter + 1,
+						total: initial.total + this.products[id].totalPrice
+					}
+				]
+			} else {
+				this.cart = [
+					...data,
+					{
+						...this.products[id],
+						counter: 1,
+						total: this.products[id].totalPrice
+					}
+				]
+			}
+		}
+	}
 }
-// Vue.createApp(App).mount('#app')
+
 const app = Vue.createApp(App)
-app.component('type-block', {
-	data() {
-		return {
-			count: 0
-		}
-	},
-	props: ['actualCost', 'needCost',],
-	template: `
-	<template v-if="actualCost == needCost">
-	<button v-if="count < 1" @click="count++"
-		class="grid-template-pizza__to-bascet-button">В
-		корзину</button>
-	<div v-else class="grid-template-pizza__in-bascet">
-		<div class="grid-template-pizza__gal">
-			<img src="img/gal.svg" alt="">
-		</div>
-		<button @click="count--" type="submit" class="counter--">-</button>
-		<div class="counter">{{count}}</div>
-		<button @click="count++" type="submit" class="counterplus">+</button>
-	</div>
-</template>
-`
-})
-app.component('type-block2', {
-	data() {
-		return {
-			count: 0
-		}
-	},
-	methods: {
-		addToBasket() {
-			this.count++;
-			this.$emit('counter', {
-				count: this.count,
-				pizzaName: this.pizzaName
-			})
-			// if (this.count !== 0) { console.log(this.actualCost); }
-			// else {
-			// 	console.log('her');
-			// }
-		},
-		removeFromBasket() {
-			this.count--;
-			this.$emit('counterMinus', {
-				count: this.count
-			})
-		}
-	},
-	props: ['actualCost', 'needCost', 'pizzaName'],
-	template: `
-	
-	<template v-if="actualCost == needCost">
-	<button v-if="count < 1" @click="addToBasket"
-		class="grid-template-pizza__to-bascet-button">В
-		корзину</button>
-	<div v-else class="grid-template-pizza__in-bascet">
-		<div class="grid-template-pizza__gal">
-			<img src="img/gal.svg" alt="">
-		</div>
-		<button @click="removeFromBasket" type="submit" class="counter--">-</button>
-		<div class="counter">{{count}}</div>
-		<button @click="addToBasket" type="submit" class="counterplus">+</button>
-	</div>
-</template>
-`
-})
-// app.mount('#type-blocks')
 app.mount('#app')
