@@ -20,12 +20,13 @@
 					<button @click='basketCounter++' class="header__bascet-button">Корзина: {{inBascet}}
 					</button>
 					<div v-if="basketCounter % 2 != 0" class="header__bascet-list">
-						<div v-for="(product, idx) in products" class="header__bascet-card">
+						<div v-for="(product, idx) in products" :key="product" class="header__bascet-card">
 							<div>
 								<img class="header__bascet-card-img" src="img/lolosos.jpg" alt="">
 							</div>
-							<div class="header__bascet-card-title">{{product.title}}</div>
-							<button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button>
+							<div class="header__bascet-card-title">{{product}}</div>
+							<type-block @counter-minus='removeProduct(idx, $event)'></type-block>
+							<!-- <button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button> -->
 						</div>
 
 					</div>
@@ -86,13 +87,13 @@
 					<div class="grid-template-pizza__cost-button">
 						<div class="grid-template-pizza__cost">{{lolososCost + ' ₽'}}</div>
 						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="379" pizza-name="Лолосось 25см">
+							need-cost="379" pizza-name="Лолосось 25см &nbsp&nbsp 379 ₽">
 						</type-block2>
 						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="549" pizza-name="Лолосось 30 см">
+							need-cost="549" pizza-name="Лолосось 30 см &nbsp&nbsp 549 ₽">
 						</type-block2>
 						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="699" pizza-name="Лолосось 35 см">
+							need-cost="699" pizza-name="Лолосось 35 см &nbsp&nbsp 699 ₽">
 						</type-block2>
 					</div>
 				</div>
@@ -143,12 +144,12 @@
 					</div>
 					<div class="grid-template-pizza__cost-button">
 						<div class="grid-template-pizza__cost">{{chickenBlueCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Чикен Блю 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="349"></type-block2>
-						<type-block2 pizza-name="Чикен Блю 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="499"></type-block2>
-						<type-block2 pizza-name="Чикен Блю 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="699"></type-block2>
+						<type-block2 pizza-name="Чикен Блю 25 см &nbsp&nbsp 349 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="chickenBlueCost" need-cost="349"></type-block2>
+						<type-block2 pizza-name="Чикен Блю 30 см &nbsp&nbsp 499 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="chickenBlueCost" need-cost="499"></type-block2>
+						<type-block2 pizza-name="Чикен Блю 35 см&nbsp &nbsp 699 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="chickenBlueCost" need-cost="699"></type-block2>
 					</div>
 				</div>
 				<div class="grid-template-pizza__item">
@@ -197,12 +198,12 @@
 					</div>
 					<div class="grid-template-pizza__cost-button">
 						<div class="grid-template-pizza__cost">{{asiaChickenCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Азиа-чикен 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="279"></type-block2>
-						<type-block2 pizza-name="Азиа-чикен 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="389"></type-block2>
-						<type-block2 pizza-name="Азиа-чикен 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="499"></type-block2>
+						<type-block2 pizza-name="Азиа-чикен 25 см &nbsp&nbsp 279 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="asiaChickenCost" need-cost="279"></type-block2>
+						<type-block2 pizza-name="Азиа-чикен 30 см &nbsp&nbsp 389 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="asiaChickenCost" need-cost="389"></type-block2>
+						<type-block2 pizza-name="Азиа-чикен 35 см &nbsp&nbsp 499 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="asiaChickenCost" need-cost="499"></type-block2>
 					</div>
 				</div>
 				<div class="grid-template-pizza__item">
@@ -252,12 +253,12 @@
 					</div>
 					<div class="grid-template-pizza__cost-button">
 						<div class="grid-template-pizza__cost">{{italianCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Итальянская 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="299"></type-block2>
-						<type-block2 pizza-name="Итальянская 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="439"></type-block2>
-						<type-block2 pizza-name="Итальянская 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="549">
+						<type-block2 pizza-name="Итальянская 25 см &nbsp&nbsp 299 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="italianCost" need-cost="299"></type-block2>
+						<type-block2 pizza-name="Итальянская 30 см &nbsp&nbsp 439 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="italianCost" need-cost="439"></type-block2>
+						<type-block2 pizza-name="Итальянская 35 см &nbsp&nbsp 549 ₽" @counter-minus='onCounterMinus'
+							@counter='onCounter' :actual-cost="italianCost" need-cost="549">
 							</type-block>
 
 					</div>

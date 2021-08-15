@@ -43,9 +43,9 @@ const App = {
 			inBascet: 0,
 			products: [
 				// 'Заметка 1', 'Заметка 2'
-				{ id: 1, title: 'hervam' },
-				{ id: 2, title: 'hervam2' },
-				{ id: 3, title: 'hervam3' },
+				// { id: 1, title: 'hervam' },
+				// { id: 2, title: 'hervam2' },
+				// { id: 3, title: 'hervam3' },
 			],
 		}
 	},
@@ -58,15 +58,17 @@ const App = {
 
 		onCounter(it) {
 			this.inBascet++;
-
 			this.newPizza.title = it.pizzaName;
-			this.products.push(this.newPizza)
+			this.products.push(this.newPizza.title)
 			console.log(this.products);
+			console.log(it)
+			console.log(it.count);
 		},
 		onCounterMinus() {
 			this.inBascet--;
 		},
 		removeProduct(idx) {
+			this.inBascet--;
 			this.products.splice(idx, 1)
 		},
 	},
@@ -79,12 +81,21 @@ const app = Vue.createApp(App)
 app.component('type-block', {
 	data() {
 		return {
-			count: 0
+			count: 1
 		}
 	},
-	props: ['actualCost', 'needCost',],
+	watch: {
+		count(v) {
+			if (v == 0) {
+				this.$emit('counterMinus', {
+					// count: this.count
+				});
+				console.log('fss');
+			}
+		}
+	},
+	// props: ['actualCost', 'needCost',],
 	template: `
-	<template v-if="actualCost == needCost">
 	<button v-if="count < 1" @click="count++"
 		class="grid-template-pizza__to-bascet-button">В
 		корзину</button>
@@ -96,7 +107,6 @@ app.component('type-block', {
 		<div class="counter">{{count}}</div>
 		<button @click="count++" type="submit" class="counterplus">+</button>
 	</div>
-</template>
 `
 })
 app.component('type-block2', {
@@ -108,10 +118,19 @@ app.component('type-block2', {
 	methods: {
 		addToBasket() {
 			this.count++;
-			this.$emit('counter', {
-				count: this.count,
-				pizzaName: this.pizzaName
-			})
+			if (this.count == 1) {
+				this.$emit('counter', {
+					count: this.count,
+					pizzaName: this.pizzaName
+				})
+			}
+			else {
+				this.$emit('counter', {
+					count: this.count,
+					pizzaName: this.pizzaName
+				})
+			};
+
 			// if (this.count !== 0) { console.log(this.actualCost); }
 			// else {
 			// 	console.log('her');
@@ -124,11 +143,11 @@ app.component('type-block2', {
 			})
 		}
 	},
-	props: ['actualCost', 'needCost', 'pizzaName'],
+	props: ['actualCost', 'needCost', 'pizzaName',],
 	template: `
 	
 	<template v-if="actualCost == needCost">
-	<button v-if="count < 1" @click="addToBasket"
+	<button v-if="count < 100" @click="addToBasket"
 		class="grid-template-pizza__to-bascet-button">В
 		корзину</button>
 	<div v-else class="grid-template-pizza__in-bascet">

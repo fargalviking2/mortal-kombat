@@ -113,13 +113,12 @@ h6 {
   position: absolute;
   top: 70px;
   right: 20px;
-  width: 500px;
   height: 370px;
   background-color: #fff;
   overflow: auto;
   border: 3px solid #000;
   border-radius: 10px;
-  width: 440px;
+  width: 540px;
   z-index: 10;
   padding: 20px;
 }
