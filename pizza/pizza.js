@@ -38,7 +38,7 @@ const App = {
 
 			basketCounter: 0,
 
-
+			isActive: false,
 
 			inBascet: 0,
 			inBascetSumm: 0,
@@ -58,14 +58,25 @@ const App = {
 		// },
 
 		onCounter(it) {
-			const newPizza = { title: 1 };
-			this.inBascetSumm += Number(it.cost);
-
-			this.inBascet++;
-			newPizza.title = it.pizzaName;
-			newPizza.cost = Number(it.cost);
-			this.products.push(newPizza)
-
+			let resultTwo = this.products.findIndex(item => item.title === it.pizzaName);
+			console.log(resultTwo);
+			console.log(it.count);
+			if (resultTwo == -1) {
+				const newPizza = { title: 1 };
+				this.inBascetSumm += Number(it.cost);
+				this.inBascet++;
+				newPizza.counter = 1;
+				newPizza.title = it.pizzaName;
+				newPizza.cost = Number(it.cost);
+				this.products.push(newPizza)
+			}
+			else {
+				this.inBascetSumm += Number(it.cost);
+				this.inBascet++;
+				let resultOne = this.products.find(item => item.title === it.pizzaName);
+				resultOne.counter++;
+				console.log(resultOne);
+			}
 		},
 		onCounterMinus() {
 			this.inBascet--;
@@ -74,14 +85,22 @@ const App = {
 			this.products.splice(idx, 1)
 		},
 		counterPlus(idx) {
+			this.products[idx].counter++;
 			this.inBascet++;
 			this.inBascetSumm += this.products[idx].cost;
 			console.log(this.products[idx].cost);
 		},
 		counterMinus(idx) {
+			this.products[idx].counter--;
 			this.inBascet--;
 			this.inBascetSumm -= this.products[idx].cost;
 		},
+		sort() {
+			// var exists = this.products.some(function (product) {
+			// 	return products[idx].title === this.products[idx].title
+			// });
+			// if (!exists) { console.log('yes'); }
+		}
 	},
 	// computed: {
 
@@ -92,13 +111,13 @@ const app = Vue.createApp(App)
 app.component('type-block', {
 	data() {
 		return {
-			count: 1
+			// count: 1
 		}
 	},
-	props: ['actualCost'],
+	props: ['actualCost', 'count'],
 	methods: {
 		countPlus() {
-			this.count++;
+
 			this.$emit('counterPlus', {
 
 			});
@@ -109,7 +128,7 @@ app.component('type-block', {
 			// });
 		},
 		countMinus() {
-			this.count--;
+
 			this.$emit('counterMinus', {});
 		}
 	},
@@ -119,7 +138,7 @@ app.component('type-block', {
 				this.$emit('counterNull', {
 					// count: this.count
 				});
-				console.log('fss');
+
 			}
 		}
 	},
@@ -133,7 +152,7 @@ app.component('type-block', {
 			<img src="img/gal.svg" alt="">
 		</div>
 		<button @click="countMinus" type="submit" class="counter--">-</button>
-		<div class="counter">{{count}}</div>
+		<slot></slot>
 		<button @click="countPlus" type="submit" class="counterplus">+</button>
 	</div>
 `
@@ -156,6 +175,7 @@ app.component('type-block2', {
 			}
 			else {
 				this.$emit('counter', {
+
 					cost: this.actualCost,
 					count: this.count,
 					pizzaName: this.pizzaName

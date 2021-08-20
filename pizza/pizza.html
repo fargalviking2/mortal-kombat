@@ -19,37 +19,50 @@
 				<div class="header__bascet">
 					<button @click='basketCounter++' class="header__bascet-button">Корзина: {{inBascet}}
 					</button>
-					<div v-if="basketCounter % 2 != 0" class="header__bascet-list">
-						<div v-if='basketCounter != 0' v-for="(product, idx) in products" :key="product"
-							class="header__bascet-card">
-							<div>
-								<img class="header__bascet-card-img" src="img/lolosos.jpg" alt="">
-							</div>
-							<div class="header__bascet-card-title">{{product.title }} </div>
-							<div class="header__bascet-card-cost">{{product.cost }} ₽</div>
-							<type-block @counter-plus='counterPlus(idx, $event)' @counter-minus='counterMinus(idx, $event)'
-								@counter-null='removeProduct(idx, $event)'>
-							</type-block>
-							<!-- <button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button> -->
-						</div>
-						<div class="header__summ">Итого {{inBascetSumm}} рублей</div>
-						<div v-if='inBascet == 0' class="basket__title">Товаров нет</div>
-					</div>
-				</div>
-			</header>
-			<div class="delivery">
-				<div class="delivery__title">Доставка пиццы
-				</div>
-			</div>
-			<div class="grid-template-pizza">
-				<div class="grid-template-pizza__item">
-					<img src="img/lolosos.jpg" alt="" class="grid-template-pizza">
-					<div class="grid-template-pizza__title-info">
-						<div class="grid-template-pizza__title">Лолосось</div>
-						<button @click="infoCounter++" type="submit" class="grid-template-pizza__info"
-							:class="{checked: infoCounter % 2 == 0}">i<div v-if="infoCounter % 2 == 0"
-								class="grid-template-pizza__info2">
+					<transition name="fade" mode="out-in">
+						<div v-if="basketCounter % 2 != 0" class="header__bascet-list">
 
+							<div v-if='basketCounter != 0' v-for="(product, idx) in products" :key="product"
+								class="header__bascet-card">
+								<div>
+									<img class="header__bascet-card-img" src="img/lolosos.jpg" alt="">
+								</div>
+								<div class="header__bascet-card-title">{{product.title }} </div>
+								<div class="header__bascet-card-cost">{{product.cost }} ₽</div>
+								<type-block :count='products[idx].counter' @counter-plus='counterPlus(idx, $event)'
+									@counter-minus='counterMinus(idx, $event)' @counter-null='removeProduct(idx, $event)'>
+									<div class="counter">{{products[idx].counter}}</div>
+								</type-block>
+								<!-- <button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button> -->
+							</div>
+					</transition>
+
+					<div class="header__summ">Итого {{inBascetSumm}} рублей</div>
+					<transition name="fade" mode="out-in">
+						<div v-if='inBascet == 0' class="basket__title">Товаров нет</div>
+					</transition>
+
+				</div>
+				</transition>
+
+		</div>
+		</header>
+		<div class="delivery">
+			<div class="delivery__title">Доставка пиццы</div>
+			<button @click="isActive= !isActive" :class='{active: isActive}' class="delivery__button">
+				цена &nbsp
+				<span> ↓ </span>
+			</button>
+		</div>
+		<div class="grid-template-pizza">
+			<div class="grid-template-pizza__item">
+				<img src="img/lolosos.jpg" alt="" class="grid-template-pizza">
+				<div class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Лолосось</div>
+					<button @click="infoCounter++" type="submit" class="grid-template-pizza__info"
+						:class="{checked: infoCounter % 2 == 0}">i
+						<transition name="fade" mode="out-in">
+							<div v-if="infoCounter % 2 == 0" class="grid-template-pizza__info2">
 								<div class="grid-template-pizza__info-arrow"></div>
 								Пищевая ценность на 100 г <br>
 								Энерг. ценность <span class="right">236.8 ккал</span><br>
@@ -57,24 +70,27 @@
 								Жиры <span class="right">9.6 г</span><br>
 								Углеводы<span class="right">26.9 г</span> <br>
 								Вес <span class="right">411 г</span><br>
-							</div></button>
-					</div>
-					<div class="grid-template-pizza__text">Филе лосося, сыр моцарелла, сыр креметта, соус Песто, сливочный
-						соус,
-						томаты черри</div>
-					<div class="grid-template-pizza__checkboxs">
-						<div class="grid-template-pizza__checkbox">
-							<input v-model="lolososCost" checked type="radio" name="size1" value=379> 25 см
+							</div>
+						</transition>
+					</button>
+				</div>
+				<div class="grid-template-pizza__text">Филе лосося, сыр моцарелла, сыр креметта, соус Песто, сливочный
+					соус,
+					томаты черри</div>
+				<div class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="lolososCost" checked type="radio" name="size1" value=379> 25 см
 
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model="lolososCost" type="radio" name="size1" value=549> 30 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model="lolososCost" type="radio" name="size1" value="699"> 35 см
-						</div>
 					</div>
-					<div class="grid-template-pizza__type">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="lolososCost" type="radio" name="size1" value=549> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="lolososCost" type="radio" name="size1" value="699"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<transition name="fade" mode="out-in">
 						<button v-if="lolososCost == 379" type="submit" class="grid-template-pizza__type-button">Пышное
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
@@ -88,26 +104,34 @@
 								<span class="check-style">Tонкое</span>
 							</label>
 						</div>
-					</div>
-					<div class="grid-template-pizza__cost-button">
-						<div class="grid-template-pizza__cost">{{lolososCost + ' ₽'}}</div>
-						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="379" pizza-name="Лолосось 25см">
-						</type-block2>
-						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="549" pizza-name="Лолосось 30 см">
-						</type-block2>
-						<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-							need-cost="699" pizza-name="Лолосось 35 см">
-						</type-block2>
-					</div>
+					</transition>
+
 				</div>
-				<div class="grid-template-pizza__item">
-					<img src="img/chicken-blue.jpg" alt="" class="grid-template-pizza">
-					<div class="grid-template-pizza__title-info">
-						<div class="grid-template-pizza__title">Чикен Блю чиз</div>
-						<button @click="infoCounter2++" :class="{checked: infoCounter2 % 2 == 0}" type="submit"
-							class="grid-template-pizza__info">i<div v-if="infoCounter2 % 2 == 0"
+				<div class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">{{lolososCost + ' ₽'}}</div>
+
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
+						need-cost="379" pizza-name="Лолосось 25см">
+					</type-block2>
+
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
+						need-cost="549" pizza-name="Лолосось 30 см">
+					</type-block2>
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
+						need-cost="699" pizza-name="Лолосось 35 см">
+					</type-block2>
+
+
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/chicken-blue.jpg" alt="" class="grid-template-pizza">
+				<div class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Чикен Блю чиз</div>
+					<button @click="infoCounter2++" :class="{checked: infoCounter2 % 2 == 0}" type="submit"
+						class="grid-template-pizza__info">i
+						<transition name="fade" mode="out-in">
+							<div v-if="infoCounter2 % 2 == 0"
 								class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
 								<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
 								Пищевая ценность на 100 г <br>
@@ -116,163 +140,162 @@
 								Жиры <span class="right">9 г</span><br>
 								Углеводы<span class="right">28.6 г</span> <br>
 								Вес <span class="right">378 г</span><br>
-							</div></button>
+							</div>
+						</transition>
+					</button>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, соус Пармеджано, сыры моцарелла и блю чиз,
+					томаты
+				</div>
+				<div class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='chickenBlueCost' checked type="radio" name="size2" value="349"> 25 см
 					</div>
-					<div class="grid-template-pizza__text">Копченый цыпленок, соус Пармеджано, сыры моцарелла и блю чиз,
-						томаты
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='chickenBlueCost' type="radio" name="size2" value="499"> 30 см
 					</div>
-					<div class="grid-template-pizza__checkboxs">
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='chickenBlueCost' checked type="radio" name="size2" value="349"> 25 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='chickenBlueCost' type="radio" name="size2" value="499"> 30 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='chickenBlueCost' type="radio" name="size2" value="699"> 35 см
-						</div>
-					</div>
-					<div class="grid-template-pizza__type">
-						<button v-if="chickenBlueCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
-							тесто</button>
-						<div v-else class="grid-template-pizza__type-button check-div">
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-3" name="radio-2" type="radio"
-									checked>
-								<span class="check-style check-style1">Пышное тесто</span>
-							</label>
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-4" name="radio-2" type="radio">
-								<span class="check-style">Tонкое</span>
-							</label>
-						</div>
-					</div>
-					<div class="grid-template-pizza__cost-button">
-						<div class="grid-template-pizza__cost">{{chickenBlueCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Чикен Блю 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="349"></type-block2>
-						<type-block2 pizza-name="Чикен Блю 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="499"></type-block2>
-						<type-block2 pizza-name="Чикен Блю 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="chickenBlueCost" need-cost="699"></type-block2>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='chickenBlueCost' type="radio" name="size2" value="699"> 35 см
 					</div>
 				</div>
-				<div class="grid-template-pizza__item">
-					<img src="img/asia-chicken.jpg" alt="" class="grid-template-pizza">
-					<div class="grid-template-pizza__title-info">
-						<div class="grid-template-pizza__title">Азиатский цыпленок</div>
-						<button @click="infoCounter3++, infoCounter4 = 1" :class="{checked: infoCounter3 % 2 == 0}"
-							type="submit" class="grid-template-pizza__info">i<div v-if="infoCounter3 % 2 == 0"
-								class="grid-template-pizza__info2 grid-template-pizza__info2-left">
-								<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow3"></div>
-								Пищевая ценность на 100 г <br>
-								Энерг. ценность <span class="right">240.3 ккал</span><br>
-								Белки <span class="right">8.9 г </span><br>
-								Жиры <span class="right">9.1 г</span><br>
-								Углеводы<span class="right">30.7 г</span> <br>
-								Вес <span class="right">407 г</span><br>
-							</div></button>
-					</div>
-					<div class="grid-template-pizza__text">Копченый цыпленок, моцарелла, томатный соус, кисло-сладкий соус
-					</div>
-					<div class="grid-template-pizza__checkboxs">
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='asiaChickenCost' checked type="radio" name="size3" value="279"> 25 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='asiaChickenCost' type="radio" name="size3" value="389"> 30 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='asiaChickenCost' type="radio" name="size3" value="499"> 35 см
-						</div>
-					</div>
-					<div class="grid-template-pizza__type">
-						<button v-if="asiaChickenCost == 279" type="submit" class="grid-template-pizza__type-button">Пышное
-							тесто</button>
-						<div v-else class="grid-template-pizza__type-button check-div">
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-5" name="radio-3" type="radio"
-									checked>
-								<span class="check-style check-style1">Пышное тесто</span>
-							</label>
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-6" name="radio-3" type="radio">
-								<span class="check-style">Tонкое</span>
-							</label>
-						</div>
-					</div>
-					<div class="grid-template-pizza__cost-button">
-						<div class="grid-template-pizza__cost">{{asiaChickenCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Азиа-чикен 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="279"></type-block2>
-						<type-block2 pizza-name="Азиа-чикен 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="389"></type-block2>
-						<type-block2 pizza-name="Азиа-чикен 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="asiaChickenCost" need-cost="499"></type-block2>
+				<div class="grid-template-pizza__type">
+					<button v-if="chickenBlueCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
+						тесто</button>
+					<div v-else class="grid-template-pizza__type-button check-div">
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-3" name="radio-2" type="radio" checked>
+							<span class="check-style check-style1">Пышное тесто</span>
+						</label>
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-4" name="radio-2" type="radio">
+							<span class="check-style">Tонкое</span>
+						</label>
 					</div>
 				</div>
-				<div class="grid-template-pizza__item">
-					<img src="img/lolosos.jpg" alt="" class="grid-template-pizza">
-					<div class="grid-template-pizza__title-info">
-						<div class="grid-template-pizza__title">Итальянская</div>
-						<button @click="infoCounter4++, infoCounter3 = 1" :class="{checked: infoCounter4 % 2 == 0}"
-							type="submit" class="grid-template-pizza__info">i<div v-if="infoCounter4 % 2 == 0"
-								class="grid-template-pizza__info2">
-								<div class="grid-template-pizza__info-arrow"></div>
-								Пищевая ценность на 100 г <br>
-								Энерг. ценность <span class="right">252.8 ккал</span><br>
-								Белки <span class="right">8.9 г </span><br>
-								Жиры <span class="right">10.4 г</span><br>
-								Углеводы<span class="right">30.9 г</span> <br>
-								Вес <span class="right">393 г</span><br>
-							</div></button>
+				<div class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">{{chickenBlueCost + ' ₽'}}</div>
+					<type-block2 pizza-name="Чикен Блю 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="chickenBlueCost" need-cost="349"></type-block2>
+					<type-block2 pizza-name="Чикен Блю 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="chickenBlueCost" need-cost="499"></type-block2>
+					<type-block2 pizza-name="Чикен Блю 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="chickenBlueCost" need-cost="699"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/asia-chicken.jpg" alt="" class="grid-template-pizza">
+				<div class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Азиатский цыпленок</div>
+					<button @click="infoCounter3++, infoCounter4 = 1" :class="{checked: infoCounter3 % 2 == 0}" type="submit"
+						class="grid-template-pizza__info">i<div v-if="infoCounter3 % 2 == 0"
+							class="grid-template-pizza__info2 grid-template-pizza__info2-left">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow3"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">240.3 ккал</span><br>
+							Белки <span class="right">8.9 г </span><br>
+							Жиры <span class="right">9.1 г</span><br>
+							Углеводы<span class="right">30.7 г</span> <br>
+							Вес <span class="right">407 г</span><br>
+						</div></button>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, моцарелла, томатный соус, кисло-сладкий соус
+				</div>
+				<div class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='asiaChickenCost' checked type="radio" name="size3" value="279"> 25 см
 					</div>
-					<div class="grid-template-pizza__text">Запеченная пепперони, шампиньоны, моцарелла, маслины, томаты,
-						итальянские травы, томатный соус</div>
-					<div class="grid-template-pizza__checkboxs">
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='italianCost' checked type="radio" name="size4" value="299"> 25 см
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='asiaChickenCost' type="radio" name="size3" value="389"> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='asiaChickenCost' type="radio" name="size3" value="499"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<button v-if="asiaChickenCost == 279" type="submit" class="grid-template-pizza__type-button">Пышное
+						тесто</button>
+					<div v-else class="grid-template-pizza__type-button check-div">
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-5" name="radio-3" type="radio" checked>
+							<span class="check-style check-style1">Пышное тесто</span>
+						</label>
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-6" name="radio-3" type="radio">
+							<span class="check-style">Tонкое</span>
+						</label>
+					</div>
+				</div>
+				<div class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">{{asiaChickenCost + ' ₽'}}</div>
+					<type-block2 pizza-name="Азиа-чикен 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="asiaChickenCost" need-cost="279"></type-block2>
+					<type-block2 pizza-name="Азиа-чикен 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="asiaChickenCost" need-cost="389"></type-block2>
+					<type-block2 pizza-name="Азиа-чикен 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="asiaChickenCost" need-cost="499"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/lolosos.jpg" alt="" class="grid-template-pizza">
+				<div class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Итальянская</div>
+					<button @click="infoCounter4++, infoCounter3 = 1" :class="{checked: infoCounter4 % 2 == 0}" type="submit"
+						class="grid-template-pizza__info">i<div v-if="infoCounter4 % 2 == 0"
+							class="grid-template-pizza__info2">
+							<div class="grid-template-pizza__info-arrow"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">252.8 ккал</span><br>
+							Белки <span class="right">8.9 г </span><br>
+							Жиры <span class="right">10.4 г</span><br>
+							Углеводы<span class="right">30.9 г</span> <br>
+							Вес <span class="right">393 г</span><br>
+						</div></button>
+				</div>
+				<div class="grid-template-pizza__text">Запеченная пепперони, шампиньоны, моцарелла, маслины, томаты,
+					итальянские травы, томатный соус</div>
+				<div class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='italianCost' checked type="radio" name="size4" value="299"> 25 см
 
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='italianCost' type="radio" name="size4" value="439"> 30 см
-						</div>
-						<div class="grid-template-pizza__checkbox">
-							<input v-model='italianCost' type="radio" name="size4" value="549"> 35 см
-						</div>
 					</div>
-					<div class="grid-template-pizza__type">
-						<button v-if="italianCost == 299" type="submit" class="grid-template-pizza__type-button">Пышное
-							тесто</button>
-						<div v-else class="grid-template-pizza__type-button check-div">
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-7" name="radio-4" type="radio"
-									checked>
-								<span class="check-style check-style1">Пышное тесто</span>
-							</label>
-							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-8" name="radio-4" type="radio">
-								<span class="check-style">Tонкое</span>
-							</label>
-						</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='italianCost' type="radio" name="size4" value="439"> 30 см
 					</div>
-					<div class="grid-template-pizza__cost-button">
-						<div class="grid-template-pizza__cost">{{italianCost + ' ₽'}}</div>
-						<type-block2 pizza-name="Итальянская 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="299"></type-block2>
-						<type-block2 pizza-name="Итальянская 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="439"></type-block2>
-						<type-block2 pizza-name="Итальянская 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
-							:actual-cost="italianCost" need-cost="549">
-							</type-block>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='italianCost' type="radio" name="size4" value="549"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<button v-if="italianCost == 299" type="submit" class="grid-template-pizza__type-button">Пышное
+						тесто</button>
+					<div v-else class="grid-template-pizza__type-button check-div">
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-7" name="radio-4" type="radio" checked>
+							<span class="check-style check-style1">Пышное тесто</span>
+						</label>
+						<label class="radio-label">
+							<input class="grid-template-pizza__type-checkbox" id="radio-8" name="radio-4" type="radio">
+							<span class="check-style">Tонкое</span>
+						</label>
+					</div>
+				</div>
+				<div class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">{{italianCost + ' ₽'}}</div>
+					<type-block2 pizza-name="Итальянская 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="italianCost" need-cost="299"></type-block2>
+					<type-block2 pizza-name="Итальянская 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="italianCost" need-cost="439"></type-block2>
+					<type-block2 pizza-name="Итальянская 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="italianCost" need-cost="549">
+						</type-block>
 
-					</div>
 				</div>
 			</div>
 		</div>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script> -->
-		<script src="https://unpkg.com/vue@next"></script>
-		<script src="pizza.js"></script>
+	</div>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script> -->
+	<script src="https://unpkg.com/vue@next"></script>
+	<script src="pizza.js"></script>
 	</div>
 
 </body>

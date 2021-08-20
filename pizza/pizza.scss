@@ -92,6 +92,31 @@
 	text-align: center;
 }
 .delivery {
+	display: flex;
+	align-items: center;
+	&__button {
+		font-size: 16px;
+
+		font-family: "SF-CompactR-Regular";
+		line-height: 19px;
+		border: 1.5px solid #d8dbe2;
+		border-radius: 7px;
+		padding: 11px 17px;
+		align-items: center;
+		display: flex;
+		outline: 0;
+		cursor: pointer;
+		margin-right: 15px;
+		background: #fff;
+		user-select: none;
+		margin-top: 33px;
+	}
+	&__button:hover {
+		border: 1.5px solid #ff6901;
+	}
+	&__button.active {
+		color: #ff6901;
+	}
 	&__title {
 		color: #292929;
 		font-size: 34px;
@@ -99,6 +124,7 @@
 		line-height: 40px;
 		margin-bottom: 40px;
 		margin-top: 70px;
+		margin-right: 50px;
 	}
 }
 .grid-template-pizza {
@@ -409,4 +435,13 @@
 			top: 40px;
 		}
 	}
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }

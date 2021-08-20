@@ -193,6 +193,47 @@ h6 {
   text-align: center;
 }
 
+.delivery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delivery__button {
+  font-size: 16px;
+  font-family: "SF-CompactR-Regular";
+  line-height: 19px;
+  border: 1.5px solid #d8dbe2;
+  border-radius: 7px;
+  padding: 11px 17px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  outline: 0;
+  cursor: pointer;
+  margin-right: 15px;
+  background: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-top: 33px;
+}
+
+.delivery__button:hover {
+  border: 1.5px solid #ff6901;
+}
+
+.delivery__button.active {
+  color: #ff6901;
+}
+
 .delivery__title {
   color: #292929;
   font-size: 34px;
@@ -200,6 +241,7 @@ h6 {
   line-height: 40px;
   margin-bottom: 40px;
   margin-top: 70px;
+  margin-right: 50px;
 }
 
 .grid-template-pizza {
@@ -549,4 +591,15 @@ h6 {
     right: 0px;
     top: 40px;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
