@@ -257,7 +257,7 @@
 				</div>
 			</div>
 			<div class="grid-template-pizza__item">
-				<img src="img/lolosos.jpg" alt="" class="grid-template-pizza-img">
+				<img src="img/italian.jpg" alt="" class="grid-template-pizza-img">
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Итальянская</div>
 					<button @click="infoCounter4++, infoCounter3 = 1" :class="{checked: infoCounter4 % 2 == 0}" type="submit"
@@ -319,6 +319,69 @@
 						:actual-cost="italianCost" need-cost="549">
 						</type-block>
 
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/shrimps.jpg" alt="" class="grid-template-pizza-img">
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Креветки по-тайски</div>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left3">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow4"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">237.2 ккал</span><br>
+							Белки <span class="right">11.1 г </span><br>
+							Жиры <span class="right">6.4 г</span><br>
+							Углеводы<span class="right">33.8 г</span> <br>
+							Вес <span class="right">371 г</span><br>
+						</div>
+					</info>
+				</div>
+				<div class="grid-template-pizza__text">Креветки, шампиньоны, моцарелла, соус Ранч, кисло-сладкий соус,
+					черный кунжут</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="shrimpsCost" checked type="radio" name="size5" value=379> 25 см
+
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="shrimpsCost" type="radio" name="size5" value=549> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model="shrimpsCost" type="radio" name="size5" value="699"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<trans>
+						<button v-if="shrimpsCost == 379" type="submit" class="grid-template-pizza__type-button">Пышное
+							тесто</button>
+						<div v-else class="grid-template-pizza__type-button check-div">
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-1" name="radio5" type="radio"
+									checked>
+								<span class="check-style check-style1">Пышное тесто</span>
+							</label>
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-2" name="radio5" type="radio">
+								<span class="check-style">Tонкое</span>
+							</label>
+						</div>
+					</trans>
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">
+						<number :number="shrimpsCost"></number>
+					</div>
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
+						need-cost="379" pizza-name="Креветки по-тайски 25см">
+					</type-block2>
+
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
+						need-cost="549" pizza-name="Креветки по-тайски 30 см">
+					</type-block2>
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
+						need-cost="699" pizza-name="Креветки по-тайски 35 см">
+					</type-block2>
 				</div>
 			</div>
 		</div>

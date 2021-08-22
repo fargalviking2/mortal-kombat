@@ -17,6 +17,7 @@ const App = {
 			chickenBlueCost: "349",
 			asiaChickenCost: "279",
 			italianCost: "299",
+			shrimpsCost: "379",
 
 			counterLosos: 0,
 			counterLosos25: 0,
@@ -287,6 +288,23 @@ app.component('number2', {
 		this.her = this.number
 	},
 
+})
+app.component('info', {
+	data() {
+		return {
+			infoCounter: 1,
+		}
+	},
+	template: `
+	<button @click="infoCounter++" type="submit" class="grid-template-pizza__info"
+		:class="{checked: infoCounter % 2 == 0 }">i
+		<trans>
+			<template v-if="infoCounter % 2 == 0">
+				<slot></slot>
+			</template>
+		</trans>
+	</button>
+	`
 })
 // app.mount('#type-blocks')
 app.mount('#app')

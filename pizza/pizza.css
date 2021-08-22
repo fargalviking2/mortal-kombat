@@ -222,6 +222,8 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   outline: 0;
   cursor: pointer;
   margin-right: 15px;
@@ -497,6 +499,9 @@ h6 {
   .grid-template-pizza__info2-left {
     margin-left: -100px;
   }
+  .grid-template-pizza__info2-left3 {
+    margin-left: -80px;
+  }
   .grid-template-pizza__info-arrow3 {
     margin-left: 100px;
   }
@@ -505,6 +510,9 @@ h6 {
   }
   .grid-template-pizza__info-arrow2 {
     margin-left: 40px;
+  }
+  .grid-template-pizza__info-arrow4 {
+    margin-left: 80px;
   }
 }
 
@@ -520,8 +528,12 @@ h6 {
     padding: 0;
   }
   .delivery__title {
+    font-size: 24px;
     margin-left: 50px;
     margin-top: 100px;
+  }
+  .delivery__button {
+    margin-top: 65px;
   }
   .header__bascet-list {
     border: 2px solid #000;
@@ -592,6 +604,18 @@ h6 {
     position: absolute;
     right: 0px;
     top: 40px;
+  }
+}
+
+@media (max-width: 405px) {
+  .delivery__title {
+    font-size: 20px;
+    margin-left: 50px;
+    margin: 80px 30px 30px 30px;
+  }
+  .delivery__button {
+    font-size: 16px;
+    margin-top: 54px;
   }
 }
 
