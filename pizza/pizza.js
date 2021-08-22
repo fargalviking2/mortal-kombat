@@ -39,7 +39,7 @@ const App = {
 
 			basketCounter: 0,
 
-			isActive: false,
+			isActive: 0,
 
 			inBascet: 0,
 			inBascetSumm: 0,
@@ -240,6 +240,36 @@ app.component('number', {
 	template: `
 	<p v-if="count == 0">{{ her + ' ₽'}}</p>
 	<p v-if="count != 0">{{ animatedNumber + ' ₽'}}</p>
+	`,
+	computed: {
+		animatedNumber() {
+
+			return this.tweenedNumber.toFixed(0)
+		}
+	},
+	watch: {
+		number(newValue) {
+			this.count++;
+			gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue })
+		}
+	},
+	mounted: function () {
+		this.her = this.number
+	},
+
+})
+app.component('number2', {
+	data() {
+		return {
+			count: 0,
+			her: 0,
+			tweenedNumber: 0
+		}
+	},
+	props: ['number',],
+	template: `
+	<template v-if="count == 0">{{ her + ' рублей'}}</template>
+	<template v-if="count != 0">{{ animatedNumber + ' рублей'}}</template>
 	`,
 	computed: {
 		animatedNumber() {
