@@ -259,9 +259,11 @@ h6 {
 }
 
 .grid-template-pizza__title-info {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 10;
 }
 
 .grid-template-pizza__title {
@@ -385,7 +387,7 @@ h6 {
 
 .grid-template-pizza__type-checkbox:checked + .check-style {
   border: #ff6901 2px solid;
-  z-index: 20;
+  z-index: 1;
 }
 
 .grid-template-pizza__in-bascet {
@@ -439,6 +441,7 @@ h6 {
 
 .check-style {
   z-index: 0;
+  opacity: 1;
   position: absolute;
   border: thistle 2px solid;
   border-radius: 30px;
@@ -602,4 +605,17 @@ h6 {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  -webkit-transform: translateX(30px);
+          transform: translateX(30px);
 }

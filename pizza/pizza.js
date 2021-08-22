@@ -12,6 +12,7 @@
 const App = {
 	data() {
 		return {
+
 			lolososCost: '379',
 			chickenBlueCost: "349",
 			asiaChickenCost: "279",
@@ -82,6 +83,7 @@ const App = {
 			this.inBascet--;
 		},
 		removeProduct(idx) {
+			console.log('ge');
 			this.products.splice(idx, 1)
 		},
 		counterPlus(idx) {
@@ -102,22 +104,20 @@ const App = {
 			// if (!exists) { console.log('yes'); }
 		}
 	},
-	// computed: {
 
-	// },
 }
 // Vue.createApp(App).mount('#app')
 const app = Vue.createApp(App)
 app.component('type-block', {
 	data() {
 		return {
-			// count: 1
+			count: 1
 		}
 	},
-	props: ['actualCost', 'count'],
+	props: ['actualCost', 'counter'],
 	methods: {
 		countPlus() {
-
+			this.count++;
 			this.$emit('counterPlus', {
 
 			});
@@ -128,13 +128,15 @@ app.component('type-block', {
 			// });
 		},
 		countMinus() {
-
+			this.count = this.counter;
+			this.count--;
 			this.$emit('counterMinus', {});
 		}
 	},
 	watch: {
 		count(v) {
 			if (v == 0) {
+				console.log('ye');
 				this.$emit('counterNull', {
 					// count: this.count
 				});
@@ -211,6 +213,50 @@ app.component('type-block2', {
 	</div>
 </template>
 `
+})
+app.component('trans', {
+	template: `
+	<transition name="fade" mode="out-in">
+		<slot></slot>
+	</transition>
+	`
+})
+app.component('trans-gr', {
+	template: `
+	<transition-group name="list" tag="p">
+		<slot></slot>
+	</transition-group>
+	`
+})
+app.component('number', {
+	data() {
+		return {
+			count: 0,
+			her: 0,
+			tweenedNumber: 0
+		}
+	},
+	props: ['number',],
+	template: `
+	<p v-if="count == 0">{{ her + ' ₽'}}</p>
+	<p v-if="count != 0">{{ animatedNumber + ' ₽'}}</p>
+	`,
+	computed: {
+		animatedNumber() {
+
+			return this.tweenedNumber.toFixed(0)
+		}
+	},
+	watch: {
+		number(newValue) {
+			this.count++;
+			gsap.to(this.$data, { duration: 0.5, tweenedNumber: newValue })
+		}
+	},
+	mounted: function () {
+		this.her = this.number
+	},
+
 })
 // app.mount('#type-blocks')
 app.mount('#app')
