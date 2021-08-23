@@ -1,5 +1,25 @@
 @import "zerostyle.scss";
 
+@font-face {
+	font-family: "Gilroy";
+	src: url("fonts/10177.eot");
+	src: local("☺"), url("fonts/10177.woff") format("woff"), url("fonts/10177.ttf") format("truetype"),
+		url("fonts/10177.svg") format("svg");
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Gilroy-ExtraBold";
+	src: url("fonts/Gilroy-ExtraBold.eot");
+	src: local("☺"), url("fonts/Gilroy-ExtraBold.woff") format("woff"),
+		url("fonts/Gilroy-ExtraBold.ttf") format("truetype"), url("fonts/Gilroy-ExtraBold.svg") format("svg");
+	font-weight: 500;
+	font-style: normal;
+}
+* {
+	font-family: "Gilroy";
+	letter-spacing: 0.5px;
+}
 .wrapper {
 	width: 100%;
 
@@ -45,7 +65,7 @@
 		padding: 10px 15px;
 		cursor: pointer;
 		color: #fff;
-		font-family: "SF-CompactR-Medium";
+
 		font-size: 15px;
 		line-height: 18px;
 		user-select: none;
@@ -84,7 +104,7 @@
 }
 .basket__title {
 	font-size: 28px;
-	font-family: "SF-CompactR-Medium";
+
 	line-height: 26px;
 	margin: 50px 10px 10px 0;
 	color: #292929;
@@ -100,7 +120,7 @@
 	&__button {
 		font-size: 20px;
 		transition: all 0.3s ease 0s;
-		font-family: "SF-CompactR-Regular";
+
 		line-height: 19px;
 		border: 1.5px solid #d8dbe2;
 		border-radius: 7px;
@@ -122,9 +142,10 @@
 		color: #ff6901;
 	}
 	&__title {
+		font-family: "Gilroy-ExtraBold";
 		color: #292929;
 		font-size: 34px;
-		font-family: "SF-CompactR-Medium";
+
 		line-height: 40px;
 		margin-bottom: 40px;
 		margin-top: 70px;
@@ -150,7 +171,7 @@
 
 	&__title {
 		font-size: 22px;
-		font-family: "SF-CompactR-Medium";
+
 		line-height: 26px;
 		margin: 10px 10px 10px 0;
 		color: #292929;
@@ -161,7 +182,7 @@
 		border: 1.5px solid #d8dbe2;
 		color: #cfd3da;
 		font-size: 15px;
-		font-family: "SF-CompactR-Bold";
+
 		text-align: center;
 		border-radius: 100%;
 		width: 24px;
@@ -185,7 +206,7 @@
 	&__text {
 		font-size: 14px;
 		color: #6d7384;
-		font-family: "SF-CompactR-Regular";
+
 		line-height: 20px;
 		margin: 5px 35px 5px 0;
 		min-height: 65px;
@@ -231,7 +252,7 @@
 		z-index: 21;
 		color: #fff;
 		font-size: 14px;
-		font-family: "SF-CompactR-Regular";
+
 		text-align: left;
 		padding: 20px;
 		line-height: 25px;
@@ -244,7 +265,7 @@
 		background-color: #ff6901;
 		color: #fff;
 		font-size: 16px;
-		font-family: "SF-CompactR-Medium";
+
 		border-radius: 7px 7px 7px 7px;
 		padding: 11px 27px;
 	}
@@ -270,12 +291,30 @@
 		margin-right: 15px;
 		margin-bottom: -6px;
 	}
+	&__info2-left {
+		margin-left: -100px;
+	}
+	&__info2-left3 {
+		margin-left: -80px;
+	}
+	&__info-arrow3 {
+		margin-left: 100px;
+	}
+	&__info2-left2 {
+		margin-left: -40px;
+	}
+	&__info-arrow2 {
+		margin-left: 40px;
+	}
+	&__info-arrow4 {
+		margin-left: 80px;
+	}
 }
 .counter-- {
 	background-color: #ff6901;
 	color: #fff;
 	font-size: 16px;
-	font-family: "SF-CompactR-Medium";
+
 	border-radius: 7px 0px 0px 7px;
 	padding: 11px 15px;
 }
@@ -287,7 +326,7 @@
 	background-color: #ff6901;
 	color: #fff;
 	font-size: 16px;
-	font-family: "SF-CompactR-Medium";
+
 	border-radius: 0px 7px 7px 0px;
 	padding: 11px 15px;
 }
@@ -332,25 +371,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
-		&__info2-left {
-			margin-left: -100px;
-		}
-		&__info2-left3 {
-			margin-left: -80px;
-		}
-		&__info-arrow3 {
-			margin-left: 100px;
-		}
-		&__info2-left2 {
-			margin-left: -40px;
-		}
-		&__info-arrow2 {
-			margin-left: 40px;
-		}
-		&__info-arrow4 {
-			margin-left: 80px;
-		}
 	}
 }
 .checked {
@@ -392,6 +412,10 @@
 			margin-bottom: 40px;
 			position: relative;
 			align-items: flex-start;
+		}
+		&__bascet-card-title {
+			font-size: 16px;
+			line-height: 1.2em;
 		}
 		&__bascet-card-cost {
 			position: absolute;
@@ -448,7 +472,7 @@
 		}
 	}
 }
-@media (max-width: 405px) {
+@media (max-width: 440px) {
 	.delivery__title {
 		font-size: 20px;
 		margin-left: 50px;
@@ -486,45 +510,70 @@
 [v-cloak] {
 	display: none;
 }
+.i1 {
+	order: 5;
+}
 .grid-template-pizza.top1 {
-	:first-child {
-		order: 4;
-	}
+	// :first-child* {
+	// 	order: initial;
+	// }
 	:nth-child(2) {
 		order: 3;
 	}
 	:nth-child(3) {
 		order: 1;
 	}
-
-	:last-child {
+	:nth-child(4) {
 		order: 2;
+	}
+	:nth-child(5) {
+		order: 6;
+	}
+	:nth-child(6) {
+		order: 7;
+	}
+	:nth-child(7) {
+		order: 8;
+	}
+	:last-child {
+		order: 4;
 	}
 }
 .grid-template-pizza.bottom1 {
 	:first-child {
-		order: 1;
-	}
-	:nth-child(2) {
-		order: 2;
-	}
-	:nth-child(3) {
 		order: 4;
 	}
-
-	:last-child {
+	:nth-child(2) {
+		order: 6;
+	}
+	:nth-child(3) {
+		order: 8;
+	}
+	:nth-child(4) {
+		order: 7;
+	}
+	:nth-child(5) {
 		order: 3;
 	}
+	:nth-child(6) {
+		order: 2;
+	}
+	:nth-child(7) {
+		order: 1;
+	}
+	:last-child {
+		order: 5;
+	}
 }
-.active.grid-template-pizza__title-info {
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-}
-.active.grid-template-pizza__cost-button {
-	flex-direction: row-reverse;
-	justify-content: space-between;
-}
-.active.grid-template-pizza__checkboxs {
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-}
+// .active.grid-template-pizza__title-info {
+// 	flex-direction: row-reverse;
+// 	justify-content: flex-end;
+// }
+// .active.grid-template-pizza__cost-button {
+// 	flex-direction: row-reverse;
+// 	justify-content: space-between;
+// }
+// .active.grid-template-pizza__checkboxs {
+// 	flex-direction: row-reverse;
+// 	justify-content: flex-end;
+// }
