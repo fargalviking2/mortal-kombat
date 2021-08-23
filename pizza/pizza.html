@@ -130,21 +130,18 @@
 				<img src="img/chicken-blue.jpg" alt="" class="grid-template-pizza-img">
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Чикен Блю чиз</div>
-					<button @click="infoCounter2++" :class="{checked: infoCounter2 % 2 == 0}" type="submit"
-						class="grid-template-pizza__info">i
-						<trans>
-							<div v-if="infoCounter2 % 2 == 0"
-								class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
-								<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
-								Пищевая ценность на 100 г <br>
-								Энерг. ценность <span class="right">239 ккал</span><br>
-								Белки <span class="right">10.9 г </span><br>
-								Жиры <span class="right">9 г</span><br>
-								Углеводы<span class="right">28.6 г</span> <br>
-								Вес <span class="right">378 г</span><br>
-							</div>
-						</trans>
-					</button>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">239 ккал</span><br>
+							Белки <span class="right">10.9 г </span><br>
+							Жиры <span class="right">9 г</span><br>
+							Углеводы<span class="right">28.6 г</span> <br>
+							Вес <span v-if="chickenBlueCost==349" class="right">378 г</span><span v-if="chickenBlueCost==499"
+								class="right">576 г</span><span v-if="chickenBlueCost==699" class="right">776 г</span><br>
+						</div>
+					</info>
 				</div>
 				<div class="grid-template-pizza__text">Копченый цыпленок, соус Пармеджано, сыры моцарелла и блю чиз,
 					томаты
@@ -194,22 +191,18 @@
 				<img src="img/asia-chicken.jpg" alt="" class="grid-template-pizza-img">
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Азиатский цыпленок</div>
-					<button @click="infoCounter3++, infoCounter4 = 1" :class="{checked: infoCounter3 % 2 == 0}" type="submit"
-						class="grid-template-pizza__info">i
-						<trans>
-							<div v-if="infoCounter3 % 2 == 0"
-								class="grid-template-pizza__info2 grid-template-pizza__info2-left">
-								<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow3"></div>
-								Пищевая ценность на 100 г <br>
-								Энерг. ценность <span class="right">240.3 ккал</span><br>
-								Белки <span class="right">8.9 г </span><br>
-								Жиры <span class="right">9.1 г</span><br>
-								Углеводы<span class="right">30.7 г</span> <br>
-								Вес <span class="right">407 г</span><br>
-							</div>
-						</trans>
-
-					</button>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow3"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">240.3 ккал</span><br>
+							Белки <span class="right">8.9 г </span><br>
+							Жиры <span class="right">9.1 г</span><br>
+							Углеводы<span class="right">30.7 г</span> <br>
+							Вес <span v-if="asiaChickenCost==279" class="right">417 г</span><span v-if="asiaChickenCost==389"
+								class="right">609 г</span><span v-if="asiaChickenCost==499" class="right">843 г</span><br>
+						</div>
+					</info>
 				</div>
 				<div class="grid-template-pizza__text">Копченый цыпленок, моцарелла, томатный соус, кисло-сладкий соус
 				</div>
@@ -258,20 +251,18 @@
 				<img src="img/italian.jpg" alt="" class="grid-template-pizza-img">
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Итальянская</div>
-					<button @click="infoCounter4++, infoCounter3 = 1" :class="{checked: infoCounter4 % 2 == 0}" type="submit"
-						class="grid-template-pizza__info">i
-						<trans>
-							<div v-if="infoCounter4 % 2 == 0" class="grid-template-pizza__info2">
-								<div class="grid-template-pizza__info-arrow"></div>
-								Пищевая ценность на 100 г <br>
-								Энерг. ценность <span class="right">252.8 ккал</span><br>
-								Белки <span class="right">8.9 г </span><br>
-								Жиры <span class="right">10.4 г</span><br>
-								Углеводы<span class="right">30.9 г</span> <br>
-								Вес <span class="right">393 г</span><br>
-							</div>
-						</trans>
-					</button>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">252.8 ккал</span><br>
+							Белки <span class="right">8.9 г </span><br>
+							Жиры <span class="right">10.4 г</span><br>
+							Углеводы<span class="right">30.9 г</span> <br>
+							Вес <span v-if="italianCost==299" class="right">371 г</span><span v-if="italianCost==439"
+								class="right">616 г</span><span v-if="italianCost==549" class="right">875 г</span><br>
+						</div>
+					</info>
 				</div>
 				<div class="grid-template-pizza__text">Запеченная пепперони, шампиньоны, моцарелла, маслины, томаты,
 					итальянские травы, томатный соус</div>
@@ -331,7 +322,8 @@
 							Белки <span class="right">11.1 г </span><br>
 							Жиры <span class="right">6.4 г</span><br>
 							Углеводы<span class="right">33.8 г</span> <br>
-							Вес <span class="right">371 г</span><br>
+							Вес <span v-if="shrimpsCost==379" class="right">371 г</span><span v-if="shrimpsCost==549"
+								class="right">549 г</span><span v-if="shrimpsCost==699" class="right">732 г</span><br>
 						</div>
 					</info>
 				</div>
@@ -387,8 +379,8 @@
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Супермясная</div>
 					<info>
-						<div class="grid-template-pizza__info2 ">
-							<div class="grid-template-pizza__info-arrow "></div>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
 							Пищевая ценность на 100 г <br>
 							Энерг. ценность <span class="right">288.5 ккал</span><br>
 							Белки <span class="right">10.1 г </span><br>
@@ -451,8 +443,8 @@
 				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
 					<div class="grid-template-pizza__title">Цезарь с креветками </div>
 					<info>
-						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left3">
-							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow4"></div>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow3"></div>
 							Пищевая ценность на 100 г <br>
 							Энерг. ценность <span class="right">245.3 ккал</span><br>
 							Белки <span class="right">11.4 г </span><br>
@@ -570,6 +562,250 @@
 						:actual-cost="barbecueCost" need-cost="499"></type-block2>
 					<type-block2 pizza-name="Цыпленок Барбекю 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
 						:actual-cost="barbecueCost" need-cost="649"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/karbonara.jpg" alt="" class="grid-template-pizza-img">
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Карбонара</div>
+					<info>
+						<div class="grid-template-pizza__info2 ">
+							<div class="grid-template-pizza__info-arrow "></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">276.6 ккал</span><br>
+							Белки <span class="right">9.4 г </span><br>
+							Жиры <span class="right">13.4 г</span><br>
+							Углеводы<span class="right">29.6 г</span> <br>
+							Вес <span v-if="carbonaraCost==349" class="right">396 г</span><span v-if="carbonaraCost==499"
+								class="right">597 г</span><span v-if="carbonaraCost==649" class="right">802 г</span><br>
+						</div>
+					</info>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, бекон, соус барбекю, моцарелла, красный лук,
+					томатный соус
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='carbonaraCost' checked type="radio" name="size9" value="349"> 25 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='carbonaraCost' type="radio" name="size9" value="499"> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='carbonaraCost' type="radio" name="size9" value="649"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<trans>
+						<button v-if="carbonaraCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
+							тесто</button>
+						<div v-else class="grid-template-pizza__type-button check-div">
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-17" name="radio-9" type="radio"
+									checked>
+								<span class="check-style check-style1">Пышное тесто</span>
+							</label>
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-18" name="radio-9" type="radio">
+								<span class="check-style">Tонкое</span>
+							</label>
+						</div>
+					</trans>
+
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">
+						<number :number="carbonaraCost"></number>
+					</div>
+					<type-block2 pizza-name="Карбонара 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="carbonaraCost" need-cost="349"></type-block2>
+					<type-block2 pizza-name="Карбонара 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="carbonaraCost" need-cost="499"></type-block2>
+					<type-block2 pizza-name="Карбонара 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="carbonaraCost" need-cost="649"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/runchChicken.jpg" alt="" class="grid-template-pizza-img">
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Цыпленок Ранч</div>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">249.2 ккал</span><br>
+							Белки <span class="right">8.5 г </span><br>
+							Жиры <span class="right">11.4 г</span><br>
+							Углеводы<span class="right">27.7 г</span> <br>
+							Вес <span v-if="runchCost==349" class="right">426 г</span><span v-if="runchCost==499"
+								class="right">643 г</span><span v-if="runchCost==649" class="right">903 г</span><br>
+						</div>
+					</info>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, бекон, соус барбекю, моцарелла, красный лук,
+					томатный соус
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='runchCost' checked type="radio" name="size10" value="349"> 25 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='runchCost' type="radio" name="size10" value="499"> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='runchCost' type="radio" name="size10" value="649"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<trans>
+						<button v-if="runchCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
+							тесто</button>
+						<div v-else class="grid-template-pizza__type-button check-div">
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-19" name="radio-10" type="radio"
+									checked>
+								<span class="check-style check-style1">Пышное тесто</span>
+							</label>
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-20" name="radio-10" type="radio">
+								<span class="check-style">Tонкое</span>
+							</label>
+						</div>
+					</trans>
+
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">
+						<number :number="runchCost"></number>
+					</div>
+					<type-block2 pizza-name="Цыпленок Ранч 25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="runchCost" need-cost="349"></type-block2>
+					<type-block2 pizza-name="Цыпленок Ранч 30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="runchCost" need-cost="499"></type-block2>
+					<type-block2 pizza-name="Цыпленок Ранч 35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="runchCost" need-cost="649"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/baronBacon.jpg" alt="" class="grid-template-pizza-img">
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Барон Бекон </div>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">279 ккал</span><br>
+							Белки <span class="right">9.3 г </span><br>
+							Жиры <span class="right">13.8 г</span><br>
+							Углеводы<span class="right">29.4 г</span> <br>
+							Вес <span v-if="baronCost==349" class="right">404 г</span><span v-if="baronCost==499"
+								class="right">590 г</span><span v-if="baronCost==649" class="right">831 г</span><br>
+						</div>
+					</info>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, бекон, соус барбекю, моцарелла, красный лук,
+					томатный соус
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='baronCost' checked type="radio" name="size11" value="349"> 25 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='baronCost' type="radio" name="size11" value="499"> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='baronCost' type="radio" name="size11" value="649"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<trans>
+						<button v-if="baronCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
+							тесто</button>
+						<div v-else class="grid-template-pizza__type-button check-div">
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-21" name="radio-11" type="radio"
+									checked>
+								<span class="check-style check-style1">Пышное тесто</span>
+							</label>
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-22" name="radio-11" type="radio">
+								<span class="check-style">Tонкое</span>
+							</label>
+						</div>
+					</trans>
+
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">
+						<number :number="baronCost"></number>
+					</div>
+					<type-block2 pizza-name="Барон Бекон  25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="baronCost" need-cost="349"></type-block2>
+					<type-block2 pizza-name="Барон Бекон  30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="baronCost" need-cost="499"></type-block2>
+					<type-block2 pizza-name="Барон Бекон  35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="baronCost" need-cost="649"></type-block2>
+				</div>
+			</div>
+			<div class="grid-template-pizza__item">
+				<img src="img/fourCheese.jpg" alt="" class="grid-template-pizza-img">
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__title-info">
+					<div class="grid-template-pizza__title">Четыре Сыра </div>
+					<info>
+						<div class="grid-template-pizza__info2 grid-template-pizza__info2-left2 ">
+							<div class="grid-template-pizza__info-arrow grid-template-pizza__info-arrow2"></div>
+							Пищевая ценность на 100 г <br>
+							Энерг. ценность <span class="right">304.2 ккал</span><br>
+							Белки <span class="right">13.2 г </span><br>
+							Жиры <span class="right">13.4 г</span><br>
+							Углеводы<span class="right">32.7 г</span> <br>
+							Вес <span v-if="fourChesCost==349" class="right">344 г</span><span v-if="fourChesCost==499"
+								class="right">507 г</span><span v-if="fourChesCost==649" class="right">676 г</span><br>
+						</div>
+					</info>
+				</div>
+				<div class="grid-template-pizza__text">Копченый цыпленок, бекон, соус барбекю, моцарелла, красный лук,
+					томатный соус
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__checkboxs">
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='fourChesCost' checked type="radio" name="size12" value="349"> 25 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='fourChesCost' type="radio" name="size12" value="499"> 30 см
+					</div>
+					<div class="grid-template-pizza__checkbox">
+						<input v-model='fourChesCost' type="radio" name="size12" value="649"> 35 см
+					</div>
+				</div>
+				<div class="grid-template-pizza__type">
+					<trans>
+						<button v-if="fourChesCost == 349" type="submit" class="grid-template-pizza__type-button">Пышное
+							тесто</button>
+						<div v-else class="grid-template-pizza__type-button check-div">
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-23" name="radio-12" type="radio"
+									checked>
+								<span class="check-style check-style1">Пышное тесто</span>
+							</label>
+							<label class="radio-label">
+								<input class="grid-template-pizza__type-checkbox" id="radio-24" name="radio-12" type="radio">
+								<span class="check-style">Tонкое</span>
+							</label>
+						</div>
+					</trans>
+
+				</div>
+				<div :class="{active: isActive % 2 != 0}" class="grid-template-pizza__cost-button">
+					<div class="grid-template-pizza__cost">
+						<number :number="fourChesCost"></number>
+					</div>
+					<type-block2 pizza-name="Четыре Сыра  25 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="fourChesCost" need-cost="349"></type-block2>
+					<type-block2 pizza-name="Четыре Сыра  30 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="fourChesCost" need-cost="499"></type-block2>
+					<type-block2 pizza-name="Четыре Сыра  35 см" @counter-minus='onCounterMinus' @counter='onCounter'
+						:actual-cost="fourChesCost" need-cost="649"></type-block2>
 				</div>
 			</div>
 		</div>
