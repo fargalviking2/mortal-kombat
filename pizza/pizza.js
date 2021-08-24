@@ -39,10 +39,10 @@ const App = {
 			// counterItalian30: 0,
 			// counterItalian35: 0,
 
-			infoCounter: 1,
-			infoCounter2: 1,
-			infoCounter3: 1,
-			infoCounter4: 1,
+			// infoCounter: 1,
+			// infoCounter2: 1,
+			// infoCounter3: 1,
+			// infoCounter4: 1,
 
 			basketCounter: 0,
 
@@ -55,6 +55,9 @@ const App = {
 				// { id: 1, title: 'hervam', cost: 349 },
 				// { id: 2, title: 'hervam2', cost: 349 },
 				// { id: 3, title: 'hervam3', cost: 349 },
+			],
+			pain: [
+				{ title: 'hervam', counter: 1 }
 			],
 		}
 	},
@@ -86,18 +89,24 @@ const App = {
 				console.log(resultOne);
 			}
 		},
-		onCounterMinus() {
+		onCounterMinus(it) {
 			this.inBascet--;
+			this.inBascetSumm -= Number(it.cost);
+			let resultOne = this.products.find(item => item.title === it.pizzaName);
+			resultOne.counter--;
+			if (resultOne.counter == 0) {
+				this.removeProduct(idx)
+			}
 		},
 		removeProduct(idx) {
-			console.log('ge');
+
 			this.products.splice(idx, 1)
 		},
 		counterPlus(idx) {
 			this.products[idx].counter++;
 			this.inBascet++;
 			this.inBascetSumm += this.products[idx].cost;
-			console.log(this.products[idx].cost);
+			console.log(this.products[idx].title);
 		},
 		counterMinus(idx) {
 			this.products[idx].counter--;
@@ -199,11 +208,13 @@ app.component('type-block2', {
 		removeFromBasket() {
 			this.count--;
 			this.$emit('counterMinus', {
-				count: this.count
+				cost: this.actualCost,
+				count: this.count,
+				pizzaName: this.pizzaName
 			})
 		}
 	},
-	props: ['actualCost', 'needCost', 'pizzaName',],
+	props: ['actualCost', 'needCost', 'pizzaName'],
 	template: `
 	
 	<template v-if="actualCost == needCost">

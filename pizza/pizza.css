@@ -748,6 +748,12 @@ h6 {
           order: 8;
 }
 
+.grid-template-pizza.top1 :nth-child(11) {
+  -webkit-box-ordinal-group: 10;
+      -ms-flex-order: 9;
+          order: 9;
+}
+
 .grid-template-pizza.top1 :last-child {
   -webkit-box-ordinal-group: 5;
       -ms-flex-order: 4;
