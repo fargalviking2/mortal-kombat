@@ -35,18 +35,19 @@
 		position: fixed;
 		width: 100%;
 		height: 60px;
-		background-color: rgb(247, 241, 241);
+		// background-color: rgb(247, 241, 241);
 		left: 0px;
 		top: 0;
 		z-index: 30;
 	}
 	&__bascet-list {
 		position: fixed;
-		top: 70px;
+		top: 80px;
 		right: 20px;
 		height: 370px;
 		background-color: #fff;
 		overflow: auto;
+		overflow-x: hidden;
 		border: 3px solid #000;
 		border-radius: 10px;
 		width: 620px;
@@ -56,20 +57,28 @@
 		position: absolute;
 		right: 10px;
 		top: 10px;
-		background: #ff6901;
+		// background: #ff6901;
 		float: right;
 		outline: 0;
 		border-radius: 7px;
 		border: none;
-		height: 40px;
+		// height: 40px;
 		padding: 10px 15px;
 		cursor: pointer;
-		color: #fff;
+		color: #ff6901;
 
-		font-size: 15px;
+		font-size: 25px;
 		line-height: 18px;
 		user-select: none;
-		min-width: 107px;
+		// min-width: 107px;
+	}
+	&__bascet-img {
+		height: 40px;
+	}
+	&__bascet-span {
+		display: inline-block;
+		margin-top: 12px;
+		margin-left: 10px;
 	}
 	&__bascet-card {
 		display: flex;
@@ -96,7 +105,7 @@
 		z-index: 2;
 		font-size: 20px;
 		position: fixed;
-		top: 395px;
+		top: 405px;
 		text-align-last: center;
 		padding: 11px 20px;
 		right: 25px;
@@ -484,6 +493,14 @@
 	}
 }
 @media (max-width: 440px) {
+	.header {
+		&__bascet-img {
+			height: 30px;
+		}
+		&__bascet-span {
+			margin-top: 7px;
+		}
+	}
 	.delivery__title {
 		font-size: 20px;
 		line-height: 26px;
