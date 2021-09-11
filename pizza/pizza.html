@@ -38,11 +38,44 @@
 									</type-block>
 									<!-- <button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button> -->
 								</div>
+
 							</trans-gr>
+							<div>
+								<trans-gr>
+									<div v-for="(snack, idx) in snacks" :key="snack" class="header__bascet-card2"
+										:class='{b30: snack.counter>0}'>
+
+										<template v-if="snack.counter > 0">
+											<div>
+												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img"
+													alt="">
+											</div>
+											<div class="header__bascet-card-title header__bascet-card-title2">{{snack.title }}
+											</div>
+											<div class="header__bascet-card-cost header__bascet-card-cost2">{{snack.cost }} ₽</div>
+											<button v-if="snack.counter < 1" @click="snack.counter++"
+												class="grid-template-pizza__to-bascet-button ">В
+												корзину</button>
+											<div v-else class="grid-template-pizza__in-bascet grid-template-pizza__in-bascet2">
+												<div class="grid-template-pizza__gal">
+													<img src="img/gal.svg" alt="">
+												</div>
+												<button @click="snackCounterMinus(idx)" type="submit" class="counter--">-</button>
+												<div class="counter">{{snack.counter}}</div>
+												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost"
+													type="submit" class="counterplus">+</button>
+											</div>
+										</template>
+
+										<!-- <button @click="removeProduct(idx, $event)" class="header__bascet-card-button">Удалить</button> -->
+									</div>
+								</trans-gr>
+							</div>
+
 
 					</transition>
 
-					<div class="header__summ">Итого <number2 :number="inBascetSumm"></number2>
+					<div class="header__summ">Сумма заказа <number2 :number="inBascetSumm"></number2>
 					</div>
 					<transition name="fade" mode="out-in">
 						<div v-if='inBascet == 0' class="basket__title">Товаров нет</div>
@@ -810,6 +843,39 @@
 						:actual-cost="fourChesCost" need-cost="499"></type-block2>
 					<type-block2 pizza-name="Четыре Сыра  35 см" @counter-minus='onCounterMinus' @counter='onCounter'
 						:actual-cost="fourChesCost" need-cost="649"></type-block2>
+				</div>
+			</div>
+		</div>
+		<div class="delivery  ">
+			<div class="delivery__title delivery__title2">Закуски</div>
+		</div>
+		<div class="grid-template-pizza grid-template-snacks">
+			<div v-for="(snack, idx) in snacks" :key="snack" class="grid-template-snacks__card">
+				<div class="grid-template-snacks__card-img">
+					<img :src=" snack.img " alt="">
+				</div>
+				<div class="grid-template-snacks__card-title">
+					{{ snack.title }}
+				</div>
+				<div class="grid-template-snacks__card-text">{{ snack.description }}</div>
+				<div class="grid-template-snacks__card-line2">
+					<div class="grid-template-pizza__cost">{{ snack.cost }} ₽</div>
+
+
+					<button v-if="snack.counter < 1" @click="snack.counter++,inBascet++,inBascetSumm += snack.cost"
+						class="grid-template-pizza__to-bascet-button">В
+						корзину</button>
+					<div v-else class="grid-template-pizza__in-bascet">
+						<div class="grid-template-pizza__gal">
+							<img src="img/gal.svg" alt="">
+						</div>
+						<button @click="snack.counter--, inBascet--,inBascetSumm -= snack.cost" type="submit"
+							class="counter--">-</button>
+						<div class="counter">{{snack.counter}}</div>
+						<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost" type="submit"
+							class="counterplus">+</button>
+					</div>
+
 				</div>
 			</div>
 		</div>

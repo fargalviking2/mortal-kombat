@@ -56,8 +56,97 @@ const App = {
 				// { id: 2, title: 'hervam2', cost: 349 },
 				// { id: 3, title: 'hervam3', cost: 349 },
 			],
-			pain: [
-				{ title: 'hervam', counter: 1 }
+			snacks: [
+				{
+					title: 'Салат Итальянский',
+					description: 'Салат айсберг, листики рукколы, свежие огурчики и томаты черри, шарики молодой моцареллы, соус Песто и прованские травы',
+					img: 'img/italianSalad.jpg',
+					cost: 229,
+					counter: 0,
+					id: 1,
+					// disabled: false,
+				},
+				{
+					title: 'Салат  Греческий',
+					description: 'Свежий салат айсберг, томаты черри, оливки, свежий огурец, кубики феты, оливковое масло, базилик, 205 г',
+					img: 'img/grekSalad.jpg',
+					cost: 169,
+					counter: 0,
+					id: 1
+				},
+				{
+					title: 'Салат Цезарь с креветками',
+					description: 'Отборные креветки, салат айсберг, сыр пармезан, томаты черри, итальянские травы, гренки, соус цезарь, 220 г',
+					img: 'img/sezarSaladShrimps.jpg',
+					cost: 249,
+					counter: 0,
+					id: 1
+				},
+				{
+					title: 'Салат Цезарь',
+					description: 'Копченое куриное филе, гренки, салат айсберг, томаты черри, пармезан, итальянские травы, соус цезарь, 220 г',
+					img: 'img/sezarSalad.jpg',
+					cost: 199,
+					counter: 0,
+					id: 1
+				},
+				{
+					title: 'Томатный суп с гренками',
+					description: 'Горячий суп с пшеничными гренками, оливками, сыром Пармезан на основе фирменного соуса',
+					img: 'img/supGrenki.jpg',
+					cost: 169,
+					counter: 0,
+					id: 1
+				},
+				{
+					title: 'Томатный суп с митболами',
+					description: 'Горячий суп с митболами и оливками на основе фирменного соуса',
+					img: 'img/supMitball.jpg',
+					cost: 184,
+					counter: 0,
+				},
+				{
+					title: 'Томатный суп с митболами',
+					description: 'Горячий суп с митболами и оливками на основе фирменного соуса',
+					img: 'img/supOstr.jpg',
+					cost: 184,
+					counter: 0,
+				},
+				{
+					title: 'Куриные кусочки',
+					description: 'Нежные куриные кусочки в хрустящей панировке, 240 г',
+					img: 'img/chickenPieseBig.jpg',
+					cost: 299,
+					counter: 0,
+				},
+				{
+					title: 'Куриные крылья Острые 8 шт',
+					description: 'Большая порция сочных крыльев из печи с острым соусом Шрирача, 315 г',
+					img: 'img/krOs.jpg',
+					cost: 349,
+					counter: 0,
+				},
+				{
+					title: 'Куриные крылья Grill',
+					description: 'Большая порция сочных крыльев Grill из горячей печи, 290 г',
+					img: 'img/krGr.jpg',
+					cost: 349,
+					counter: 0,
+				},
+				{
+					title: 'Картофель запеченный',
+					description: 'Большие порции запеченного картофеля с перцем или солью на выбор, 180г',
+					img: 'img/poZa.jpg',
+					cost: 169,
+					counter: 0,
+				},
+				{
+					title: 'Картофель детский Улыбка',
+					description: 'Запеченные картофельные оладьи в форме смайлика, 8 шт',
+					img: 'img/poCh.jpg',
+					cost: 99,
+					counter: 0,
+				},
 			],
 		}
 	},
@@ -99,7 +188,6 @@ const App = {
 			}
 		},
 		removeProduct(idx) {
-
 			this.products.splice(idx, 1)
 		},
 		counterPlus(idx) {
@@ -112,6 +200,10 @@ const App = {
 			this.products[idx].counter--;
 			this.inBascet--;
 			this.inBascetSumm -= this.products[idx].cost;
+		},
+		snackCounterMinus(idx) {
+			if (this.snacks[idx].counter > 1) { this.snacks[idx].counter--; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
+			else { this.snacks[idx].disabled = true; this.snacks[idx].counter = 0; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
 		},
 		sort() {
 			// var exists = this.products.some(function (product) {
@@ -241,7 +333,7 @@ app.component('trans', {
 })
 app.component('trans-gr', {
 	template: `
-	<transition-group name="list" tag="p">
+	<transition-group name="list" tag="">
 		<slot></slot>
 	</transition-group>
 	`

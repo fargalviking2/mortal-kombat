@@ -20,6 +20,10 @@
 	font-family: "Gilroy";
 	letter-spacing: 0.5px;
 }
+.disabled {
+	position: relative;
+	z-index: -1;
+}
 .wrapper {
 	width: 100%;
 
@@ -86,8 +90,20 @@
 		align-items: center;
 		margin-bottom: 30px;
 	}
+	&__bascet-card2 {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.b30 {
+		padding-bottom: 30px;
+	}
 	&__bascet-card-img {
 		height: 70px;
+	}
+	&__bascet-card-img2 {
+		height: 80px;
+		margin-left: -5px;
 	}
 	&__bascet-card-title {
 	}
@@ -370,6 +386,53 @@
 	border: none;
 	margin-bottom: 25px;
 }
+.delivery__title2 {
+	margin-top: 0;
+}
+.grid-template-snacks {
+	display: grid;
+	grid-template: 1fr / 1fr 1fr 1fr 1fr;
+	gap: 10px;
+	&__card {
+		display: flex;
+		flex-direction: column;
+		width: 300px;
+		padding: 20px;
+		align-items: center;
+		border-radius: 16px;
+		box-shadow: 0px 0px 16px rgba(97, 97, 97, 0.15);
+		margin-bottom: 30px;
+	}
+
+	&__card-img {
+	}
+	&__card-title {
+		min-height: 52px;
+		align-self: start;
+		font-size: 22px;
+		font-weight: 800;
+		line-height: 26px;
+		margin: 10px 0;
+		color: #292929;
+	}
+	&__card-text {
+		min-height: 80px;
+		font-size: 14px;
+		color: #6d7384;
+		margin: 5px 0 25px 0;
+		line-height: 20px;
+	}
+	&__card-line2 {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__card-counter {
+	}
+}
+
 @media (max-width: 1200px) {
 	.grid-template-pizza {
 		grid-template: 1fr 1fr / 1fr 1fr;
@@ -401,9 +464,6 @@
 			margin: 0 auto;
 			padding-bottom: 40px;
 		}
-
-		&__bascet-button {
-		}
 		&__bascet-card {
 			display: flex;
 			justify-content: space-between;
@@ -415,24 +475,41 @@
 			font-size: 16px;
 			line-height: 1.2em;
 		}
+
 		&__bascet-card-cost {
 			position: absolute;
 			left: 30%;
 			top: 50px;
+		}
+		&__bascet-card-cost2 {
+			position: relative;
+			left: -20px;
+			top: 20px;
 		}
 		.grid-template-pizza__in-bascet {
 			position: absolute;
 			right: 10px;
 			top: 40px;
 		}
+		.grid-template-pizza__in-bascet2 {
+			position: relative;
+			top: 20px;
+		}
 		&__bascet-card-img {
 			height: 80px;
+			margin-top: 5px;
+		}
+		&__bascet-card-img2 {
+			height: 90px;
 			margin-top: 5px;
 		}
 		&__bascet-card-title {
 			position: absolute;
 			margin-top: 10px;
 			margin-left: 30%;
+		}
+		&__bascet-card-title2 {
+			margin-top: -46px;
 		}
 		&__bascet-card-button {
 			color: #fff;
@@ -482,6 +559,11 @@
 			margin-top: 8px;
 			margin-left: -5px;
 		}
+		&__bascet-card-img2 {
+			height: 85px;
+			margin-top: 8px;
+			margin-left: -10px;
+		}
 		&__summ {
 			width: 316px;
 		}
@@ -489,6 +571,19 @@
 			position: absolute;
 			right: 0px;
 			top: 40px;
+		}
+		.grid-template-pizza__in-bascet2 {
+			position: relative;
+			top: 20px;
+		}
+		&__bascet-card-title2 {
+			margin-top: -46px;
+			margin-left: 78px;
+		}
+		&__bascet-card-cost2 {
+			position: relative;
+			left: -3px;
+			top: 20px;
 		}
 	}
 }
@@ -499,6 +594,12 @@
 		}
 		&__bascet-span {
 			margin-top: 7px;
+		}
+		&__bascet-list {
+			top: 70px;
+		}
+		&__summ {
+			top: 395px;
 		}
 	}
 	.delivery__title {
@@ -532,6 +633,7 @@
 	opacity: 0;
 	transform: translateX(30px);
 }
+
 .rotate {
 	transform: rotate(180deg);
 	margin-bottom: -3px;
