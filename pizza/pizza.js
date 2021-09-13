@@ -61,7 +61,7 @@ const App = {
 					title: 'Салат Итальянский',
 					description: 'Салат айсберг, листики рукколы, свежие огурчики и томаты черри, шарики молодой моцареллы, соус Песто и прованские травы',
 					img: 'img/italianSalad.jpg',
-					cost: 229,
+					cost: 229, type: 'New',
 					counter: 0,
 					id: 1,
 					// disabled: false,
@@ -106,10 +106,10 @@ const App = {
 					counter: 0,
 				},
 				{
-					title: 'Томатный суп с митболами',
-					description: 'Горячий суп с митболами и оливками на основе фирменного соуса',
+					title: 'Томатный суп острый',
+					description: 'Томатный суп с копченым цыпленком, острым перчиком халапеньо, соусом Сальса и свежим луком',
 					img: 'img/supOstr.jpg',
-					cost: 184,
+					cost: 184, type: 'Hot',
 					counter: 0,
 				},
 				{
@@ -121,7 +121,7 @@ const App = {
 				},
 				{
 					title: 'Куриные крылья Острые 8 шт',
-					description: 'Большая порция сочных крыльев из печи с острым соусом Шрирача, 315 г',
+					description: 'Большая порция сочных крыльев из печи с острым соусом Шрирача, 315 грамм',
 					img: 'img/krOs.jpg',
 					cost: 349,
 					counter: 0,
@@ -145,9 +145,194 @@ const App = {
 					description: 'Запеченные картофельные оладьи в форме смайлика, 8 шт',
 					img: 'img/poCh.jpg',
 					cost: 99,
+					type: 'New',
 					counter: 0,
 				},
 			],
+			desserts: [
+				{
+					title: 'Мороженое классическое',
+					description: 'Нежное ванильное мороженое, 150 гр',
+					img: 'img/des1.jpg',
+					cost: 99,
+					type: 'cold',
+					counter: 0,
+				},
+				{
+					title: 'Мороженое с карамелью',
+					description: 'Нежное ванильное мороженое с карамельным сиропом, 150 гр',
+					img: 'img/des2.jpg',
+					cost: 129, type: 'Cold',
+					counter: 0,
+				},
+				{
+					title: 'Мороженое с шоколадом',
+					description: 'Нежное ванильное мороженое с шоколадным сиропом, 150 гр',
+					img: 'img/des3.jpg',
+					cost: 129, type: 'cold',
+					counter: 0,
+				},
+				{
+					title: 'Мороженое с клубникой',
+					description: 'Нежное ванильное мороженое с клубничным сиропом, 150 гр',
+					img: 'img/des4.jpg',
+					cost: 129, type: 'cold',
+					counter: 0,
+				},
+				{
+					title: 'Рулетики с брусникой',
+					description: 'Cладкие рулетики с брусникой, сгущенным молоком, только что из печи, 16 шт.',
+					img: 'img/r1.jpg',
+					cost: 149,
+					counter: 0,
+				},
+				{
+					title: 'Рулетики с ананасами',
+					description: 'Сладкие рулетики со сгущенным молоком и сочными ананасами и пряной корицей 16 шт.',
+					img: 'img/r2.jpg',
+					cost: 169,
+					type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Рулетики с корицей',
+					description: 'Cладкие рулетики с брусникой, сгущенным молоком, только что из печи, 16 шт.',
+					img: 'img/r3.jpg',
+					cost: 139,
+					counter: 0,
+				},
+				{
+					title: 'Рулетики с ананасами и брусникой ',
+					description: 'Микс сочных рулетиков со сгущенным молоком: 8 шт с ананасом и корицей и 8 шт с брусникой ( 8+8 шт)',
+					img: 'img/r4.jpg',
+					cost: 149,
+					type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Чизкейк',
+					description: 'Классический десерт из нежного творожного суфле',
+					img: 'img/ch1.jpg',
+					cost: 139,
+					counter: 0,
+				},
+				{
+					title: 'Чизкейк шоколадный',
+					description: 'Классический десерт из нежного творожного шоколадного суфле',
+					img: 'img/ch2.jpg',
+					cost: 139,
+					type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Пончик с ванильной глазурью',
+					description: 'Воздушный пончик с ванильной глазурью',
+					img: 'img/po1.jpg',
+					cost: 85,
+					counter: 0,
+				},
+				{
+					title: 'Пончик с шоколадной глазурью',
+					description: 'Воздушный пончик с шоколадной глазурью и посыпкой',
+					img: 'img/po2.jpg',
+					cost: 85,
+					counter: 0,
+				},
+			],
+			beverages: [
+				{
+					title: 'Коктейль Ананасовый',
+					description: 'Коктейль молочный с кусочками свежих ананасов, 390 мл',
+					img: 'img/co1.jpg',
+					cost: 179,
+					type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Коктейль Ягодный',
+					description: 'Коктейль молочный со свежими ягодами черной смородины, 390 мл',
+					img: 'img/co2.jpg',
+					cost: 169,
+					counter: 0,
+				},
+				{
+					title: 'Смузи Киви',
+					description: 'Коктейль фруктовый со льдом из свежих киви и банана с мятным сиропом, 390 мл',
+					img: 'img/co3.jpg',
+					cost: 159,
+					counter: 0,
+				},
+				{
+					title: 'Смузи Ягодный',
+					description: 'Коктейль фруктовый со льдом из свежих ягод черной смородины, мякоти банана с ванильным сиропом, 390 мл',
+					img: 'img/co4.jpg',
+					cost: 159, type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Коктейль Шоколадный',
+					description: 'Напиток из молока и мороженого с шоколадным сиропом, 390 мл',
+					img: 'img/mi1.jpg',
+					cost: 169,
+					counter: 0,
+				},
+				{
+					title: 'Коктейль Клубничный',
+					description: 'Напиток из молока и мороженого с клубничным сиропом, 390 мл',
+					img: 'img/mi2.jpg',
+					cost: 169,
+
+					counter: 0,
+				},
+				{
+					title: 'Коктейль Классический',
+					description: 'Любимый с детства напиток из молока и мороженого, 390 мл',
+					img: 'img/mi3.jpg',
+					cost: 149,
+					counter: 0,
+				},
+				{
+					title: 'Коктейль Айс Капучино',
+					description: 'Напиток из молока и мороженого с добавлением эспрессо и шоколадным сиропом, 350 мл',
+					img: 'img/mi4.jpg',
+					cost: 169,
+					type: 'New',
+					counter: 0,
+				},
+				{
+					title: 'Кофе Капучино',
+					description: 'Горячий напиток на основе эспрессо со вспененным молоком 0,3 л',
+					img: 'img/ko1.jpg',
+					cost: 99,
+					type: 'Hot',
+					counter: 0,
+				},
+				{
+					title: 'Кофе Латте',
+					description: 'Горячий напиток на основе эспрессо с удвоенной порцией молока 0,3 л',
+					img: 'img/ko2.jpg',
+					cost: 109,
+					type: 'Hot',
+					counter: 0,
+				},
+				{
+					title: 'Кофе Американо',
+					description: 'Бодрящий напиток на основе эспрессо 0,3 л',
+					img: 'img/ko3.jpg',
+					cost: 89,
+					type: 'Hot',
+					counter: 0,
+				},
+				{
+					title: 'Какао',
+					description: 'Тонизирующий напиток из молока и какао порошка 0,3 л',
+					img: 'img/ko4.jpg',
+					cost: 99,
+					type: 'Hot',
+					counter: 0,
+				},
+			],
+
 		}
 	},
 	methods: {
@@ -202,8 +387,15 @@ const App = {
 			this.inBascetSumm -= this.products[idx].cost;
 		},
 		snackCounterMinus(idx) {
-			if (this.snacks[idx].counter > 1) { this.snacks[idx].counter--; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
-			else { this.snacks[idx].disabled = true; this.snacks[idx].counter = 0; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
+			this.snacks[idx].counter--; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost
+			// if (this.snacks[idx].counter > 1) { this.snacks[idx].counter--; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
+			// else { this.snacks[idx].disabled = true; this.snacks[idx].counter = 0; this.inBascet--; this.inBascetSumm -= this.snacks[idx].cost }
+		},
+		dessertsCounterMinus(idx) {
+			this.desserts[idx].counter--; this.inBascet--; this.inBascetSumm -= this.desserts[idx].cost
+		},
+		beveragesCounterMinus(idx) {
+			this.beverages[idx].counter--; this.inBascet--; this.inBascetSumm -= this.beverages[idx].cost
 		},
 		sort() {
 			// var exists = this.products.some(function (product) {
