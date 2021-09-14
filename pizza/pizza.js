@@ -402,6 +402,14 @@ const App = {
 			// 	return products[idx].title === this.products[idx].title
 			// });
 			// if (!exists) { console.log('yes'); }
+		},
+		scrollTo(value) {
+			window.scrollTo({
+				top: value,
+				left: 0,
+				behavior: "smooth"
+			});
+			console.log('dd');
 		}
 	},
 

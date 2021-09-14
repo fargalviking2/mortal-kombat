@@ -16,7 +16,15 @@
 			<type-block v-for="type in types" :key="types.id" title="2">her</type-block>
 		</div> -->
 			<header class="header">
-				<div class="header__bascet">
+
+				<div class="header__container">
+					<div class="header__logo">
+						<img class="header__logo-img" src="img/logo2021X.png" alt="">
+					</div>
+					<button type="submit" @click='scrollTo(0)' class="header__link">Пицца</button>
+					<button @click='scrollTo(1970)' class="header__link">Закуски</button>
+					<button @click='scrollTo(3780)' class="header__link">Десерты</button>
+					<button @click='scrollTo(5580)' class="header__link">Напитки</button>
 					<button @click='basketCounter++' class="header__bascet-button">
 						<img class="header__bascet-img" src="img/basketX.png" alt="">
 						<span class="header__bascet-span">{{inBascet}}</span>
@@ -141,7 +149,7 @@
 		</div>
 		</header>
 		<div class="delivery">
-			<div class="delivery__title">Доставка пиццы</div>
+			<div id="pizza" class="delivery__title">Доставка пиццы</div>
 
 			<button @click="isActive++" :class='{active: isActive>0}' class="delivery__button">
 				Цена &nbsp
@@ -902,7 +910,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="delivery  ">
+		<div id="snacks" class="delivery  ">
 			<div class="delivery__title delivery__title2">Закуски</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">
@@ -936,7 +944,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="delivery  ">
+		<div id="desserts" class="delivery  ">
 			<div class="delivery__title delivery__title2">Десерты</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">
@@ -970,7 +978,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="delivery  ">
+		<div id="beverages" class="delivery  ">
 			<div class="delivery__title delivery__title2">Напитки</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">
