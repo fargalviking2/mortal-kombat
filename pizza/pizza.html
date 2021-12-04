@@ -21,10 +21,16 @@
 					<div class="header__logo">
 						<img class="header__logo-img" src="img/logo2021X.png" alt="">
 					</div>
-					<button type="submit" @click='scrollTo(0)' class="header__link">Пицца</button>
-					<button @click='scrollTo(1970)' class="header__link">Закуски</button>
-					<button @click='scrollTo(3780)' class="header__link">Десерты</button>
-					<button @click='scrollTo(5580)' class="header__link">Напитки</button>
+					<div class="header__burger">
+						<span></span>
+					</div>
+					<nav class="burger-menu">
+						<button type="submit" @click='scrollTo(0)' class="header__link">Пицца</button>
+						<button @click='scrollTo2()' class="header__link">Закуски</button>
+						<button @click='scrollTo3()' class="header__link">Десерты</button>
+						<button @click='scrollTo4()' class="header__link">Напитки</button>
+					</nav>
+
 					<button @click='basketCounter++' class="header__bascet-button">
 						<img class="header__bascet-img" src="img/basketX.png" alt="">
 						<span class="header__bascet-span">{{inBascet}}</span>
@@ -55,8 +61,7 @@
 
 										<template v-if="snack.counter > 0">
 											<div>
-												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img"
-													alt="">
+												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img" alt="">
 											</div>
 											<div class="header__bascet-card-title header__bascet-card-title2">{{snack.title }}
 											</div>
@@ -70,8 +75,8 @@
 												</div>
 												<button @click="snackCounterMinus(idx)" type="submit" class="counter--">-</button>
 												<div class="counter">{{snack.counter}}</div>
-												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost"
-													type="submit" class="counterplus">+</button>
+												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost" type="submit"
+													class="counterplus">+</button>
 											</div>
 										</template>
 
@@ -81,8 +86,7 @@
 										:class='{b30: snack.counter>0}'>
 										<template v-if="snack.counter > 0">
 											<div>
-												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img"
-													alt="">
+												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img" alt="">
 											</div>
 											<div class="header__bascet-card-title header__bascet-card-title2">{{snack.title }}
 											</div>
@@ -94,11 +98,10 @@
 												<div class="grid-template-pizza__gal">
 													<img src="img/gal.svg" alt="">
 												</div>
-												<button @click="dessertsCounterMinus(idx)" type="submit"
-													class="counter--">-</button>
+												<button @click="dessertsCounterMinus(idx)" type="submit" class="counter--">-</button>
 												<div class="counter">{{snack.counter}}</div>
-												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost"
-													type="submit" class="counterplus">+</button>
+												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost" type="submit"
+													class="counterplus">+</button>
 											</div>
 										</template>
 
@@ -108,8 +111,7 @@
 										:class='{b30: snack.counter>0}'>
 										<template v-if="snack.counter > 0">
 											<div>
-												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img"
-													alt="">
+												<img class="header__bascet-card-img header__bascet-card-img2" :src=" snack.img" alt="">
 											</div>
 											<div class="header__bascet-card-title header__bascet-card-title2">{{snack.title }}
 											</div>
@@ -121,11 +123,10 @@
 												<div class="grid-template-pizza__gal">
 													<img src="img/gal.svg" alt="">
 												</div>
-												<button @click="beveragesCounterMinus(idx)" type="submit"
-													class="counter--">-</button>
+												<button @click="beveragesCounterMinus(idx)" type="submit" class="counter--">-</button>
 												<div class="counter">{{snack.counter}}</div>
-												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost"
-													type="submit" class="counterplus">+</button>
+												<button @click="snack.counter++, inBascet++,inBascetSumm += snack.cost" type="submit"
+													class="counterplus">+</button>
 											</div>
 										</template>
 
@@ -197,8 +198,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-1" name="radio" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-1" name="radio" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -212,16 +212,16 @@
 					<div class="grid-template-pizza__cost">
 						<number :number="lolososCost"></number>
 					</div>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-						need-cost="379" pizza-name="Лолосось 25см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost" need-cost="379"
+						pizza-name="Лолосось 25см">
 
 					</type-block2>
 
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-						need-cost="549" pizza-name="Лолосось 30 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost" need-cost="549"
+						pizza-name="Лолосось 30 см">
 					</type-block2>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost"
-						need-cost="699" pizza-name="Лолосось 35 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="lolososCost" need-cost="699"
+						pizza-name="Лолосось 35 см">
 					</type-block2>
 
 
@@ -264,8 +264,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-3" name="radio-2" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-3" name="radio-2" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -324,8 +323,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-5" name="radio-3" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-5" name="radio-3" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -385,8 +383,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-7" name="radio-4" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-7" name="radio-4" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -448,8 +445,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-9" name="radio5" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-9" name="radio5" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -463,15 +459,15 @@
 					<div class="grid-template-pizza__cost">
 						<number :number="shrimpsCost"></number>
 					</div>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
-						need-cost="379" pizza-name="Креветки по-тайски 25см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost" need-cost="379"
+						pizza-name="Креветки по-тайски 25см">
 					</type-block2>
 
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
-						need-cost="549" pizza-name="Креветки по-тайски 30 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost" need-cost="549"
+						pizza-name="Креветки по-тайски 30 см">
 					</type-block2>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost"
-						need-cost="699" pizza-name="Креветки по-тайски 35 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="shrimpsCost" need-cost="699"
+						pizza-name="Креветки по-тайски 35 см">
 					</type-block2>
 				</div>
 			</div>
@@ -512,8 +508,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-11" name="radio6" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-11" name="radio6" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -527,15 +522,15 @@
 					<div class="grid-template-pizza__cost">
 						<number :number="superMeatCost"></number>
 					</div>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost"
-						need-cost="379" pizza-name="Супермясная 25см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost" need-cost="379"
+						pizza-name="Супермясная 25см">
 					</type-block2>
 
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost"
-						need-cost="549" pizza-name="Супермясная 30 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost" need-cost="549"
+						pizza-name="Супермясная 30 см">
 					</type-block2>
-					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost"
-						need-cost="699" pizza-name="Супермясная 35 см">
+					<type-block2 @counter-minus='onCounterMinus' @counter='onCounter' :actual-cost="superMeatCost" need-cost="699"
+						pizza-name="Супермясная 35 см">
 					</type-block2>
 				</div>
 			</div>
@@ -576,8 +571,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-13" name="radio7" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-13" name="radio7" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -641,8 +635,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-15" name="radio-8" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-15" name="radio-8" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -702,8 +695,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-17" name="radio-9" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-17" name="radio-9" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -738,8 +730,8 @@
 							Белки <span class="right">8.5 г </span><br>
 							Жиры <span class="right">11.4 г</span><br>
 							Углеводы<span class="right">27.7 г</span> <br>
-							Вес <span v-if="runchCost==349" class="right">426 г</span><span v-if="runchCost==499"
-								class="right">643 г</span><span v-if="runchCost==649" class="right">903 г</span><br>
+							Вес <span v-if="runchCost==349" class="right">426 г</span><span v-if="runchCost==499" class="right">643
+								г</span><span v-if="runchCost==649" class="right">903 г</span><br>
 						</div>
 					</info>
 				</div>
@@ -763,8 +755,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-19" name="radio-10" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-19" name="radio-10" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -799,8 +790,8 @@
 							Белки <span class="right">9.3 г </span><br>
 							Жиры <span class="right">13.8 г</span><br>
 							Углеводы<span class="right">29.4 г</span> <br>
-							Вес <span v-if="baronCost==349" class="right">404 г</span><span v-if="baronCost==499"
-								class="right">590 г</span><span v-if="baronCost==649" class="right">831 г</span><br>
+							Вес <span v-if="baronCost==349" class="right">404 г</span><span v-if="baronCost==499" class="right">590
+								г</span><span v-if="baronCost==649" class="right">831 г</span><br>
 						</div>
 					</info>
 				</div>
@@ -824,8 +815,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-21" name="radio-11" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-21" name="radio-11" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -885,8 +875,7 @@
 							тесто</button>
 						<div v-else class="grid-template-pizza__type-button check-div">
 							<label class="radio-label">
-								<input class="grid-template-pizza__type-checkbox" id="radio-23" name="radio-12" type="radio"
-									checked>
+								<input class="grid-template-pizza__type-checkbox" id="radio-23" name="radio-12" type="radio" checked>
 								<span class="check-style check-style1">Пышное тесто</span>
 							</label>
 							<label class="radio-label">
@@ -910,7 +899,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="snacks" class="delivery  ">
+		<div id="snacks" class="delivery scroll-with-offset ">
 			<div class="delivery__title delivery__title2">Закуски</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">
@@ -944,7 +933,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="desserts" class="delivery  ">
+		<div id="desserts" class="delivery scroll-with-offset">
 			<div class="delivery__title delivery__title2">Десерты</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">
@@ -978,7 +967,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="beverages" class="delivery  ">
+		<div id="beverages" class="delivery scroll-with-offset">
 			<div class="delivery__title delivery__title2">Напитки</div>
 		</div>
 		<div class="grid-template-pizza grid-template-snacks">

@@ -51,6 +51,10 @@
 		background-color: rgb(247, 247, 247);
 		font-size: 22px;
 		font-weight: 800;
+		margin-right: 20px;
+	}
+	&__burger {
+		display: none;
 	}
 	&__container {
 		height: 100%;
@@ -450,10 +454,80 @@
 	&__card-counter {
 	}
 }
-
+.burger-menu {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
 @media (max-width: 1200px) {
 	.grid-template-pizza {
 		grid-template: 1fr 1fr / 1fr 1fr;
+	}
+}
+@media (max-width: 790px) {
+	.header {
+		padding-right: 130px;
+		&__link {
+			background: white;
+		}
+		&__burger {
+			cursor: pointer;
+			display: block;
+			position: relative;
+			width: 30px;
+			height: 20px;
+			z-index: 30;
+			
+		}
+		&__burger span {
+			position: absolute;
+			background-color: #000;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			top: 9px;
+			transition: all 0.5s ease 0s;
+		}
+		&__burger:before,
+		&__burger:after {
+			content: "";
+			background-color: #000;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+			transition: all 0.5s ease 0s;
+		}
+		&__burger:before {
+			top: 0;
+		}
+		&__burger:after {
+			bottom: 0;
+		}
+		&__burger.active:before {
+			transform: rotate(45deg);
+			top: 9px;
+		}
+		&__burger.active span {
+			transform: scale(0);
+		}
+		&__burger.active:after {
+			transform: rotate(-45deg);
+			bottom: 9px;
+		}
+	}
+	.burger-menu {
+		position: absolute;
+		width: 100%;
+		left: -100%;
+		top: 80px;
+		transition: all 0.6s ease 0s;
+		padding: 30px 0;
+		z-index: 2;
+		background: #fff;
+	}
+	.burger-menu.active {
+		left: 0;
 	}
 }
 @media (max-width: 750px) {
@@ -556,6 +630,25 @@
 	}
 	.delivery__button {
 		margin-top: 65px;
+	}
+	.burger-menu {
+		flex-direction: column;
+		padding-bottom: 10px;top: 60px;
+	}
+	.header {
+		height: 60px;
+		padding-right: 110px;
+		&__logo-img {
+			width: 130px;
+		}
+		&__bascet-button {
+			padding: 7px 10px;
+		}
+		&__bascet-img{width: 30px; height: 28px;}
+		&__bascet-span{font-size: 20px;margin-top: 6px;}
+	}
+	.header__link {
+		margin-bottom: 20px;
 	}
 }
 @media (max-width: 528px) {
@@ -767,4 +860,8 @@
 }
 .new {
 	background: #ff4500;
+}
+.scroll-with-offset {
+	padding-top: 100px;
+	margin-top: -100px;
 }

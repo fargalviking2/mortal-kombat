@@ -12,7 +12,6 @@
 const App = {
 	data() {
 		return {
-
 			lolososCost: '379',
 			chickenBlueCost: "349",
 			asiaChickenCost: "279",
@@ -25,29 +24,8 @@ const App = {
 			fourChesCost: "349",
 			runchCost: "349",
 			carbonaraCost: "349",
-			// counterLosos: 0,
-			// counterLosos25: 0,
-			// counterLosos30: 0,
-			// counterLosos35: 0,
-			// counterBlue25: 0,
-			// counterBlue30: 0,
-			// counterBlue35: 0,
-			// counterAsian25: 0,
-			// counterAsian30: 0,
-			// counterAsian35: 0,
-			// counterItalian25: 0,
-			// counterItalian30: 0,
-			// counterItalian35: 0,
-
-			// infoCounter: 1,
-			// infoCounter2: 1,
-			// infoCounter3: 1,
-			// infoCounter4: 1,
-
 			basketCounter: 0,
-
 			isActive: 0,
-
 			inBascet: 0,
 			inBascetSumm: 0,
 			products: [
@@ -410,7 +388,25 @@ const App = {
 				behavior: "smooth"
 			});
 			console.log('dd');
-		}
+		},
+		scrollTo2() {
+			document.getElementById("snacks").scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		},
+		scrollTo3() {
+			document.getElementById("desserts").scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		},
+		scrollTo4() {
+			document.getElementById("beverages").scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		},
 	},
 
 }
@@ -617,3 +613,54 @@ app.component('info', {
 })
 // app.mount('#type-blocks')
 app.mount('#app')
+const burger = document.querySelector('.header__burger');
+const menu = document.querySelector('.burger-menu');
+const wrapper = document.querySelector('.wrapper');
+burger.addEventListener("click", function (e) {
+	burger.classList.toggle('active');
+	menu.classList.toggle('active');
+	wrapper.classList.toggle('hidden');
+});
+console.log(menu);
+
+menu.addEventListener('touchstart', handleTouchStart, false);
+menu.addEventListener('touchmove', handleTouchMove, false);
+var xDown = null;
+var yDown = null;
+
+function handleTouchStart(evt) {
+	xDown = evt.touches[0].clientX;
+	yDown = evt.touches[0].clientY;
+};
+
+function handleTouchMove(evt) {
+	if (!xDown || !yDown) {
+		return;
+	}
+	var xUp = evt.touches[0].clientX;
+	var yUp = evt.touches[0].clientY;
+	var xDiff = xDown - xUp;
+	var yDiff = yDown - yUp;
+
+	if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+		if (xDiff > 0) {
+			/* left swipe */
+			alert("left");
+		} else {
+			/* right swipe */
+			alert("right");
+		}
+	} else {
+		if (yDiff > 0) {
+			/* up swipe */
+		} else {
+			/* down swipe */
+		}
+	}
+	/* reset values */
+	xDown = null;
+	yDown = null;
+};
+menu.addEventListener("click", function (e) {
+	console.log("he");
+});
