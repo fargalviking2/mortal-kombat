@@ -387,25 +387,28 @@ const App = {
 				left: 0,
 				behavior: "smooth"
 			});
-			console.log('dd');
+			menu.classList.remove('active');
 		},
 		scrollTo2() {
 			document.getElementById("snacks").scrollIntoView({
 				behavior: 'smooth',
 				block: 'start'
 			});
+			menu.classList.remove('active');
 		},
 		scrollTo3() {
 			document.getElementById("desserts").scrollIntoView({
 				behavior: 'smooth',
 				block: 'start'
 			});
+			menu.classList.remove('active');
 		},
 		scrollTo4() {
 			document.getElementById("beverages").scrollIntoView({
 				behavior: 'smooth',
 				block: 'start'
 			});
+			menu.classList.remove('active');
 		},
 	},
 
@@ -645,10 +648,10 @@ function handleTouchMove(evt) {
 	if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
 		if (xDiff > 0) {
 			/* left swipe */
-			alert("left");
+			menu.classList.toggle('active');
 		} else {
 			/* right swipe */
-			alert("right");
+			menu.classList.toggle('active');
 		}
 	} else {
 		if (yDiff > 0) {
